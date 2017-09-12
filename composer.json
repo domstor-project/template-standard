@@ -1,8 +1,8 @@
 {
-    "name": "domstor/dev-base-template",
+    "name": "domstor-project/template-standard",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Domstor base template dev\" distribution",
+    "description": "The \"Domstor Template Standard\" distribution",
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle"
