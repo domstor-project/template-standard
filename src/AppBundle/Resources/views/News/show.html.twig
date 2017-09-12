@@ -1,0 +1,13 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. {{ post.title }}{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ url('app_home_index') }}">Главная</a> / <a href="{{ url('app_news_list') }}">Новости</a> / Текущая новость
+{% endblock %}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    
+    <p class="data">{{ post.publicationDateStart|date('d.m.Y') }}</p>
+    {{ post.content|raw }}
+{% endblock %}

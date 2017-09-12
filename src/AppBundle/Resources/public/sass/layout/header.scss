@@ -1,0 +1,207 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+.header {
+    position: relative;
+    width: 100%;
+    background: $white;
+    
+    .contact_social {
+        position: relative;
+        width: 100%;
+        background: $bg_contact_social;
+        
+        .contact_social_content {
+            width: 1110px;
+            margin: 0 auto;
+            display: table;
+            
+            @media only screen and (max-width: 1199px) {
+                width: 930px;
+            }
+            @media only screen and (max-width: 991px) {
+                width: 730px;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 90%;
+                display: block;
+                padding-bottom: .6em;
+            }
+            
+            .contact {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+                width: 70%;
+                color: $color_contact;
+                padding: .8em 0;
+                
+                @media only screen and (max-width: 991px) {
+                    padding: .6em 0;
+                    width: 65%;
+                }
+                @media only screen and (max-width: 767px) {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+                
+                .adress {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 2em;
+                    
+                    @media only screen and (max-width: 991px) {
+                        padding-bottom: .6em;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        width: 100%;
+                        display: block;
+                        margin-right: 0;
+                    }
+                }
+                .phone {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    
+                    @media only screen and (max-width: 767px) {
+                        width: 100%;
+                        display: block;
+                        padding-bottom: .6em;
+                    }
+                }
+                .glyphicon {
+                    font-size: .9em;
+                    margin-right: 8px;
+                    color: $color_contact;
+                    opacity: .7;
+                    
+                    @media only screen and (max-width: 479px) {
+                        display: none;
+                    }
+                }
+            }
+            .social {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: right;
+                
+                @media only screen and (max-width: 767px) {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+                
+                a {
+                    position: relative;
+                    display: inline-block;
+                    width: 15px;
+                    height: 18px;
+                    margin-left: 15px;
+                    
+                    &.vk {
+                        background: url(/bundles/app/images/template/social.png) no-repeat 0 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat 0 -18px;
+                        }
+                    }
+                    &.fb {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -32px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -32px -18px;
+                        }
+                    }
+                    &.inst {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -63px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -63px -18px;
+                        }
+                    }
+                    &.twit {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -96px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -96px -18px;
+                        }
+                    }
+                    &.google {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -130px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -130px -18px;
+                        }
+                    }
+                    &.odnk {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -162px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -162px -18px;
+                        }
+                    }
+                    &.youtube {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -192px 0;
+                        
+                        &:hover {
+                            background: url(/bundles/app/images/template/social.png) no-repeat -192px -18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .logo_menu {
+        position: relative;
+        width: 100%;
+        
+        .logo_menu_content {
+            width: 1110px;
+            margin: 0 auto;
+            display: table;
+            padding: 1em 0;
+            
+            @media only screen and (max-width: 1199px) {
+                width: 930px;
+            }
+            @media only screen and (max-width: 991px) {
+                width: 730px;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 90%;
+                display: block;
+                padding-bottom: .6em;
+            }
+            
+            .logo {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+                width: 24%;
+                
+                @media only screen and (max-width: 1199px) {
+                    padding-right: 2em;
+                }
+            }
+            .menu {
+                position: relative;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: left;
+                width: auto;
+            }
+        }
+    }
+    
+    /* ИКОНКИ НЕДВИЖИМОСТИ */
+    @import "../components/iconrealt";
+}
+
+/* БЛОК МЕНЮ */
+@import "../components/navbar";
+

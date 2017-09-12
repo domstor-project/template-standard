@@ -1,0 +1,47 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        "https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% stylesheets 'bundles/app/sass/inner_page.scss' filter="scssphp" output="css/inner_page.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+            'https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'
+            '@AppBundle/Resources/public/js/fancy.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block header %}
+    {% embed 'AppBundle:Includes:header.html.twig' %}
+        {% block logo %}
+            <div class="logo">
+                <a href="{{ url('app_home_index') }}" title="На главную">
+                    {% image '@AppBundle/Resources/public/images/template/logo.gif' %}
+                        <img src="{{ asset_url }}" alt="" />
+                    {% endimage %}</a>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block middle %}
+    <div class="cd-main-content">
+        <div class="middle_inners">
+            <p class="breadcrumbs">
+                {% block breadcrumbs %}{% endblock %}
+            </p>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

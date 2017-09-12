@@ -1,0 +1,373 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+@font-face {
+    font-family: ALSRubl;
+    src: url(/bundles/app/fonts/rouble.ttf);
+}
+
+a {
+    color: $link_unvisited;
+    text-decoration: underline; 
+    
+    &:visited {
+        color: $link_visited;
+    }  
+    &:hover {
+        color: $link_hover;
+    }
+}
+h1, h2, h3, h4 {
+    color: $headers_color;
+}
+h1 {
+    font-size: 1.8em;
+    padding-bottom: .5em;
+}
+h2 {
+    font-size: 1.5em;
+    padding-top: .5em;
+}
+h3 {
+  font-size: 1.2em;
+    padding-top: .5em;  
+}
+h4 {
+  font-size: 1.05em;
+    padding-top: .5em;  
+}
+p {
+    font-size: 1em;
+    padding: .4em 0;
+}
+.nobr {
+    white-space: nowrap;
+}
+.center {
+    text-align: center;
+}
+
+#baseblock {
+    position: relative;
+    width: 100%;
+    font-size: $main_size;
+    line-height: 1.5em;
+    
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+        font-size: $main_size - 1;
+    }
+   
+    @media only screen and (min-width: 1600px) {
+        font-size: $main_size + 1;
+    }
+    @media only screen and (max-width: 1199px) {
+        font-size: $main_size + 1;
+    }
+    @media only screen and (max-width: 991px) {
+        font-size: $main_size + 2;
+    } 
+    @media only screen and (max-width: 767px) {
+        font-size: $main_size + 4;
+    }
+    @media only screen and (min-width: 1600px) and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+        font-size: $main_size;
+    }
+    @media only screen and (max-width: 1199px) and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+        font-size: $main_size + 1;
+    }
+}
+
+#fixed {
+    position: fixed;
+    bottom: 40px;
+    right: 0;
+    z-index: 9999;
+    width: auto;
+    /* height: 100%; */
+    background: transparent;
+    
+    .updown {
+        display: none;
+        /* min-height: 42px;
+        height: 85%;
+        width: 100%; */
+        cursor: pointer;
+        margin: 100% auto;
+        
+        &::before {
+            display: block;
+            content: '';
+            height: 100%;
+            width: 100%;
+        }
+    }
+    #down, #up {
+        p {
+            color: $color_up;
+            font-size: 14px;
+            background: $bg_up;
+            text-align: center;
+            padding: 5px 10px;
+        }
+    }
+    /* #down::after, #up::after {
+        display: block;
+        content: '';
+        background: url(/bundles/app/images/template/up.png);
+        background-color: transparent;
+        background-repeat: no-repeat;
+        height: auto;
+        width: auto;
+        margin: 0 auto;
+    }
+    #up::after {
+        background-position: 0px 0px;
+    }
+    #down::after {
+        background-position: 0px -40px;
+    } */
+}
+.white {
+    color: $white;
+}
+
+.modal.fade {
+    .modal-dialog {
+        position: relative;
+        width: 540px;
+        margin: 10px auto;
+        
+        @media only screen and (max-width: 767px) {
+            width: 440px;
+        }
+        @media only screen and (max-width: 479px) {
+            width: 90%;
+        }
+
+        .modal-content {
+            box-shadow: 0;
+            -webkit-box-shadow: 0;
+            border: 0;
+            border-radius: 0;
+            background: #fff url(/bundles/app/images/template/bg-modal.gif) repeat-x 0 100%;
+            width: 100%;
+            padding-bottom: 40px;
+
+            .modal-header {
+                border: 0;
+
+                h4 {
+                    font-size: 1.7em;
+                    color: #464646;
+                    text-align: center;
+                }
+
+                .close {
+                    font-size: 41px;
+                    font-weight: bold;
+                    opacity: 1;
+                    text-shadow: none;
+
+                    &:hover {
+                        color: #fd0000;
+                    }
+                }
+            }
+            .modal-body {
+                width: 400px;
+                margin: 0 auto;
+                
+                @media only screen and (max-width: 767px) {
+                    width: 300px;
+                }
+                @media only screen and (max-width: 479px) {
+                    width: 90%;
+                }
+                
+                .form-group {
+                    margin-left: 0;
+                    margin-right: 0;
+                    
+                    #email_request_policy {
+                        margin: 0 .3em 0 0;
+                    }
+                    .captcha_image {
+                        position: relative;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 1em;
+                        margin-top: .5em;
+                        margin-bottom: .3em;
+                        width: 200px;
+                        height: auto;
+                        
+                        @media only screen and (max-width: 767px) {
+                            width: 180px;
+                        }
+                        @media only screen and (max-width: 339px) {
+                            width: 160px;
+                        }
+                    }
+                    .captcha_reload {
+                        position: relative;
+                        display: inline-block;
+                        vertical-align: middle;
+                        font-size: 3em;
+                        
+                        @media only screen and (max-width: 767px) {
+                           font-size: 2.5em; 
+                        }
+                        @media only screen and (max-width: 339px) {
+                            font-size: 2.2em; 
+                        }
+                    }
+                    #feedback_kcaptcha_id {
+                        position: relative;
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 190px;
+                        
+                        @media only screen and (max-width: 767px) {
+                            width: 100%;
+                        }
+                    }
+                    #showCaptchaError {
+                        p {
+                            padding: 0;
+                            color: $red;
+                            font-size: .9em;
+                        }
+                    }
+                }
+                &.privacy_policy {
+                    width: 100%;
+                    padding: 1.5em;
+                    
+                    p {
+                        font-size: 1em;
+
+                        &.data {
+                            color: #acacac;
+                            font-size: .9em;
+                        }
+                    }
+
+                    ul, ol {
+                        font-size: 1em; 
+                        padding-bottom: .5em;
+                        padding-left: 1.5em;
+
+                        li {
+                            padding-bottom: .5em;
+
+                            ul, ol {
+                               font-size: 1em; 
+                               padding-top: .5em;
+                               padding-bottom: 0;
+
+                               li:last-child {
+                                   padding-bottom: 0;
+                               }
+                            }
+                            ul {
+                                padding-left: 1.5em;
+                            }
+                        }
+                    }
+                    ul li {
+                        list-style-type: none;  
+                        position: relative;
+                        padding-left: 20px;      
+                    }
+                    ul li:before {
+                        color: #63cac9;
+                        content: "●";
+                        /* padding-right: .3em; */
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                    }
+                    ul.after_float li {
+                        overflow: hidden;
+                    }
+                    ol {
+                        padding-left: 2.5em;
+
+                        li ul {
+                            padding-left: 1em;
+                        }
+                    }
+                }
+            }
+            .btn {
+                width: 100%;
+                background: $bg_btn;
+                color: $color_btn;
+                letter-spacing: .05em;
+                font-size: 1.2em;
+                
+                @media only screen and (max-width: 479px) {
+                    font-size: 1.1em;
+                }
+                
+                &:hover {
+                    background: $bg_btn_hover;
+                }
+            }
+            /* .btn-default {
+                font-size: 1.05em;
+                padding: .4em 15px .4em 15px;
+            }
+            .btn.request {
+                background-image: none;
+                padding: .3em 15px .3em 15px;
+                margin: 0 0 0 5px;
+            }
+            .callback label {
+                width: 22%;
+                margin-right: 2%;
+                font-size: 1.05em;
+                vertical-align: top;
+            }
+            .callback input,
+            .callback textarea {
+                width: 100%;
+                display: inline-block;
+                font-size: .9em;
+            } */
+            .modal-footer {
+                border: 0;
+                text-align: center;
+                padding-top: 0;
+                padding-bottom: 30px;
+                width: 400px;
+                margin: 0 auto;
+                
+                @media only screen and (max-width: 767px) {
+                    width: 300px;
+                }
+                @media only screen and (max-width: 479px) {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

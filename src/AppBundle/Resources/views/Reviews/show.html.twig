@@ -1,0 +1,13 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. Текущий отзыв{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ url('app_home_index') }}">Главная</a> / <a href="{{ url('app_reviews_list') }}">Отзывы</a> / Текущий отзыв
+{% endblock %}
+{% block content %}
+    <h3>{{ review.author }}</h3>
+    <p>{{ review.text }}</p>
+    <p class="data">{{ review.reviewDate|date('d.m.Y') }}</p>
+    
+{% endblock %}

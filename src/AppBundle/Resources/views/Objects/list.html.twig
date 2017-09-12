@@ -1,0 +1,13 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. {{ title }}{% endblock %}
+
+{% block breadcrumbs %}<a href="{{ url('app_home_index') }}">Главная</a> / {{ title }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {{ list.filter|raw }}
+    <div class="table-responsive">{{ list|raw }} </div>
+{% endblock %}

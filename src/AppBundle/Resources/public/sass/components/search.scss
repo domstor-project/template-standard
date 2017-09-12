@@ -1,0 +1,1272 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+.domstor_filter {
+    position: relative;
+    width: 100%;
+    background: $bg_filter_realt;
+    font-size: 1em;
+    padding: 1.5em 0 2em 0;
+    margin: 1em 0 2em 0;
+    color: $color_filter_realt;
+    
+    input, select {
+        border: 1px solid $color_border_fields;
+        max-width: 95%;
+    }
+    label, input, select {
+        @include inline_block;
+        vertical-align: middle;
+        font-weight: normal;
+        line-height: 1.9em;
+        margin: 0;
+        height: auto;
+    }
+    label {
+        padding: 0;
+        font-weight: normal;
+    }
+    input {
+
+        &[type="text"] {
+            height: auto;
+            padding: .05em .25em;
+            width: 100px;
+            line-height: 1.4em;
+        }
+    }
+    .fields {
+        position: relative;
+        margin: 0 auto;
+        width: 90%;
+        padding-bottom: 1.5em;
+        
+        @media only screen and (max-width: 991px) {
+            width: 93%;
+        }
+        @media only screen and (max-width: 767px) {
+            width: 93%;
+        }
+        @media only screen and (max-width: 479px) {
+            width: 95%;
+        }
+        
+        .fields_block {
+            position: relative;
+            @include inline_block;
+            padding-right: 120px;
+            
+            @media only screen and (max-width: 1199px) {
+                padding-right: 65px;
+            }
+            @media only screen and (max-width: 991px) {
+                padding-bottom: 1em;
+                padding-right: 40px;
+            }
+            @media only screen and (max-width: 767px) {
+                display: block;
+                padding-right: 0;
+            }
+            
+            &:nth-child(2) {
+                padding-right: 0;
+            }
+            p {
+                font-size: 1em;
+                padding: 0;
+                margin: 0;
+                font-weight: normal;
+            }
+            
+            .fields_line {
+                position: relative;
+                width: 100%;
+                display: block;
+                padding-bottom: .5em;
+            }
+            .inside_line {
+                @include inline_block;
+                padding-right: 60px;
+
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                    padding-right: 0;
+                }
+
+                &:last-child {
+                    padding-right: 0;
+                }
+            }
+            .label_input {
+
+                .domstor_checkbox_group {
+                    @include inline_block;
+                    white-space: nowrap;
+                    padding-right: .8em;
+
+                    &:last-child {
+                        padding-right: 0;
+                    }
+
+                    label {
+                        padding: 0 .8em 0 .2em;
+                        font-weight: normal;
+
+                        &:last-child {
+                            padding-right: 0;
+                        }
+                    }
+                    &.in_communal {
+                        white-space: nowrap;
+
+                        label {
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+            .price {
+                &.flat_rent {
+                    padding-top: 1.1em;
+                }
+                &.flat_purchase {
+                    
+                    @media only screen and (max-width: 991px) {
+                        display: block;
+                        padding-top: 1em;
+                    }
+                }
+                &.flat_new {
+                    padding-top: 1em;
+                    
+                    @media only screen and (max-width: 1199px) {
+                        padding-top: 2.2em;
+                    }
+                    @media only screen and (max-width: 991px) {
+                        padding-top: 1.2em;
+                    }
+                }
+                &.house {
+                    /* @media only screen and (max-width: 991px) {
+                        padding-left: 10px;
+                    } */
+                    @media only screen and (max-width: 767px) {
+                        padding-left: 0;
+                    }
+                }
+                &.commerce {
+                    /* @media only screen and (max-width: 991px) {
+                        padding-left: 40px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        padding-left: 0;
+                    } */
+                    
+                    &.rent {
+                        @media only screen and (max-width: 991px) {
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+            .rooms_building {
+                padding-bottom: 0;
+            }
+            label#label_f_price_max, label#label_f_squareh_max, label#label_f_squareg_max {
+                padding-left: .5em;
+            }
+            .new_building {
+                padding-top: 1em;
+                padding-left: 100px;
+
+                @media only screen and (min-width: 1600px) {
+                    padding-left: 80px;
+                }
+                @media only screen and (max-width: 1199px) {
+                    padding-left: 10px;
+                }
+                @media only screen and (max-width: 767px) {
+                    padding-left: 0;
+                    padding-bottom: 1em;
+                }
+
+                label {
+                    padding: 0 0 0 .2em;
+                }
+            }
+            .floor {
+                @media only screen and (max-width: 991px) {
+                    @include inline_block;
+                    width: auto;
+                    padding-right: 85px;
+                }
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                    padding-right: 0;
+                }
+            }
+            .floor_fields {
+                line-height: 1.9em;
+            }
+            .max_floor {
+                padding-bottom: 2em;
+                line-height: 1.9em;
+
+                @media only screen and (max-width: 991px) {
+                    padding-bottom: 1em;
+                }
+                
+                &.flat_new {
+                    @media only screen and (max-width: 1199px) {
+                        padding-bottom: 1.5em;
+                    }
+                }
+            }
+            .code {
+
+                @media only screen and (max-width: 991px) {
+                    @include inline_block;
+                    width: auto;
+                    padding-top: 1.5em;
+                }
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                    padding-right: 0;
+                    padding-top: 0;
+                }
+
+                label {
+                    font-weight: bold;
+                }
+
+                &.flat_purchase {
+                    padding-top: 1.2em;
+                }
+                &.flat_new {
+                    padding-top: 1.2em;
+                    
+                    @media only screen and (max-width: 1199px) {
+                        display: block;
+                        padding-top: 0;
+                    }
+                }
+                &.house {
+                    padding-top: 1.5em;
+                    
+                    /* @media only screen and (max-width: 991px) {
+                        padding-left: 40px;
+                    } */
+                    @media only screen and (max-width: 767px) {
+                        padding-left: 0;
+                    }
+                }
+                &.land {
+                    padding-top: 1.2em;
+                    
+                    @media only screen and (max-width: 767px) {
+                        padding-top: 0;
+                    }
+                }
+                &.commerce {
+                    padding-top: 1.5em;
+                    
+                    /* @media only screen and (max-width: 991px) {
+                        padding-left: 40px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        padding-left: 0;
+                    } */
+                    
+                    &.rent {
+                        @media only screen and (max-width: 991px) {
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+            .squareh, .squareg, .length, .height {
+                padding-top: 1em;
+            }
+            .square.land {
+                @media only screen and (max-width: 991px) {
+                    padding-left: 0;
+                }
+                
+                &.rent, &.rentuse {
+                    @media only screen and (max-width: 991px) {
+                        padding-right: 80px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        padding-right: 0;
+                    }
+                }
+            }
+            
+            &.flat_purchase, &.flat_rentuse {
+                padding-right: 60px;
+            }
+            /* &.house {
+                padding-right: 20px;
+            } */
+            &.commerce.rent {
+                @media only screen and (max-width: 991px) {
+                    display: block;
+                }
+            }
+        }
+    }
+    .list {
+        position: relative;
+        margin: 0 auto;
+        width: 90%;
+        
+        @media only screen and (max-width: 991px) {
+            width: 93%;
+        }
+        @media only screen and (max-width: 479px) {
+            width: 95%;
+        }
+        
+        div {
+            @include inline_block;
+            text-align: left;
+            margin-right: 45px;
+            margin-bottom: 2em;
+                    
+            &:last-child {
+                margin-right: 0;
+            }
+            
+            @media only screen and (max-width: 1199px) {
+                margin-right: 25px;
+            }
+            @media only screen and (max-width: 991px) {
+                margin-right: 30px;
+            }
+            @media only screen and (max-width: 767px) {
+                /* display: block;
+                margin-right: 0; */
+                margin-right: 15px;
+            }
+            @media only screen and (max-width: 479px) {
+                /* display: block; */
+                margin-right: 0;
+            }
+            
+            p {
+                font-size: 1em;
+                padding: 0;
+                margin: 0;
+                line-height: 1.9em;
+            }
+            ul {
+                position: relative;
+                font-size: 1em;
+                padding: 0;
+                border: 1px solid #daddee;
+                width: auto;
+                max-width: 300px;
+                min-width: 300px;
+                height: 200px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                background: #fff;
+                padding: 0;
+                /* max-width: 100%; */
+                
+                @media only screen and (max-width: 1199px) {
+                    max-width: 260px;
+                    min-width: 260px;
+                }
+                @media only screen and (max-width: 991px) {
+                    max-width: 310px;
+                    min-width: 300px;
+                }
+                @media only screen and (max-width: 767px) {
+                    max-width: 400px;
+                    min-width: 280px;
+                }
+                @media only screen and (max-width: 479px) {
+                    overflow: auto;
+                    min-width: 280px;
+                    max-width: 100%;
+                }
+                @media only screen and (max-width: 319px) {
+                    min-width: 200px;
+                }
+                
+                li {
+                    position: relative;
+                    font-size: 1em;
+                    padding: 0 .3em 0 .3em;
+                    white-space: nowrap;
+                    
+                    &:before {
+                        display: none;
+                    }
+                    
+                    label {
+                        font-size: 1em;
+                        padding: .1em 0 0 .2em;
+                    }
+                    ul {
+                        width: 96%;
+                        min-width: auto;
+                        max-width: 100%;
+                        padding: 0;
+                        overflow: hidden;
+                        height: auto;
+                        border: 0;
+                        margin: 0 0 0 .6em;
+                        
+                        
+                        li {
+                            &:last-child {
+                                margin-bottom: 1%;
+                            }
+                        }
+                    }
+                }
+                
+                /* &#f_type {
+                    @media only screen and (max-width: 1199px) {
+                        width: 210px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        width: 320px;
+                    }
+                    @media only screen and (max-width: 479px) {
+                        width: 310px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        width: 300px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        width: 275px;
+                    }
+                }
+                &#f_district {
+                    @media only screen and (max-width: 991px) {
+                        width: 320px;
+                    }
+                    @media only screen and (max-width: 479px) {
+                        width: 310px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        width: 275px;
+                    }
+                }
+                &#f_suburban {
+                    @media only screen and (max-width: 1199px) {
+                        width: 210px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        width: 320px;
+                    }
+                    @media only screen and (max-width: 479px) {
+                        width: 310px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        width: 300px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        width: 275px;
+                    }
+                } */
+            }
+        }
+        /* &.garage {
+            div {
+                &:last-child {
+                    margin-right: 0;
+                }
+                @media only screen and (max-width: 1199px) {
+                    margin-right: 35px;
+                }
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                    margin-right: 0;
+                }
+                ul {
+                    &#f_type {
+                        @media only screen and (max-width: 1199px) {
+                            width: 270px;
+                        } 
+                        @media only screen and (max-width: 991px) {
+                            width: 290px;
+                        }
+                        @media only screen and (max-width: 767px) {
+                            width: 320px;
+                        }
+                        @media only screen and (max-width: 479px) {
+                            width: 310px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 300px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 275px;
+                        }
+                    }
+                    &#f_suburban {
+                        @media only screen and (max-width: 1199px) {
+                            width: 190px;
+                        }
+                        @media only screen and (max-width: 991px) {
+                            width: 290px;
+                        }
+                        @media only screen and (max-width: 767px) {
+                            width: 320px;
+                        }
+                        @media only screen and (max-width: 479px) {
+                            width: 310px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 300px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 275px;
+                        }
+                    }
+                }
+            }
+        }
+        &.commerce {
+            div {
+                &:last-child {
+                    margin-right: 0;
+                }
+                
+                ul {
+                    &#f_suburban {
+                        @media only screen and (max-width: 1199px) {
+                            width: 300px;
+                        } 
+                        @media only screen and (max-width: 991px) {
+                            width: 290px;
+                        }
+                        @media only screen and (max-width: 767px) {
+                            width: 320px;
+                        }
+                        @media only screen and (max-width: 479px) {
+                            width: 310px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 300px;
+                        }
+                        @media only screen and (max-width: 359px) {
+                            width: 275px;
+                        }
+                    }
+                }
+            }
+                        
+        } */
+    }
+    .submit {
+        position: relative;
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+        padding: 1em 0;
+        
+        @media only screen and (max-width: 479px) {
+            width: 95%;
+        }
+        
+        a, input {
+            width: auto;
+            background: $bg_submit;
+            font-size: 1.1em;
+            color: $color_submit;
+            padding: .4em 3em .45em 3em;
+            text-decoration: none;
+            font-weight: bold;
+            border: 0;
+            cursor: pointer;
+            -webkit-appearance: none;
+            border-radius: 5px;
+        }
+        input {
+            position: absolute;
+            top: -.3em;
+            margin-left: -.5em;
+            z-index: 10;
+        }
+        a {
+            z-index: 20;
+        }
+        a:hover, a:focus, input:hover, input:focus {
+            background: $bg_submit_hover !important;
+            color: $color_submit_hover !important;
+            outline: none !important;
+        }
+    }
+}
+
+table.domstor_table {
+    position: relative;
+    width: 100%;
+    font-size: .95em;
+    line-height: 1.2em;
+    
+    @media only screen and (max-width: 1199px) {
+        font-size: .9em;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    thead {
+        td {
+            padding: 5px;
+            background: $bg_table_head;
+            border: 1px solid $color_border_table_head;
+            text-align: center;
+            vertical-align: middle;
+            color: $color_table_head;
+            line-height: 1.1em; 
+            
+            &.domstor_building_material_head {
+                display: none;
+            }
+            &.domstor_balcony_head {
+                display: none;
+            }
+            @media only screen and (max-width: 991px) {
+                padding: 3px;
+                
+                &.domstor_building_material_head {
+                    display: none;
+                }
+                &.domstor_balcony_head {
+                    display: none;
+                }
+                &.domstor_cellar_head {
+                    display: none;
+                }
+                &.domstor_size_head {
+                    display: none;
+                }
+            }
+            
+            a, a:visited {
+                color: $color_link_table_head;
+                
+                &:hover {
+                    color: $color_link_hover_table_head;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    tbody {
+       td {
+            padding: 3px;
+            border: 1px solid $color_border_table;
+            text-align: center;
+            vertical-align: middle;
+            
+            &.domstor_code {
+                white-space: nowrap;
+            }
+            &.domstor_thumb img {
+                width: 30px;
+                height: 30px;
+            }
+            &.domstor_building_material {
+                display: none;
+            }
+            &.domstor_address {
+                text-align: left;
+                white-space: nowrap;
+            }
+            &.domstor_contact {
+                white-space: nowrap;
+            }
+            &.domstor_balcony {
+                display: none;
+            }
+            &.zayav, &.zayav2 {
+                text-align: left;
+            }
+            @media only screen and (max-width: 991px) {
+                padding: 3px;
+                
+                /* &.domstor_building_material {
+                    display: none;
+                }
+                &.domstor_balcony {
+                    display: none;
+                }
+                &.domstor_type {
+                    max-width: 85px;
+                    overflow: hidden;
+                }
+                &.domstor_cellar {
+                    display: none;
+                }
+                &.domstor_size {
+                    display: none;
+                } */
+            }
+        } 
+        tr {
+            background: $bg_table_tr;
+            
+            &:hover {
+                background: $bg_table_tr_hover; 
+                
+                td {
+                    border: 1px solid $color_border_tr_hover;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    /* Таблица больше не обычная таблица */
+    /* table.domstor_table, table.domstor_table thead, table.domstor_table tbody, table.domstor_table th, table.domstor_table td, table.domstor_table tr, table.domstor_table tbody td.domstor_building_material, table.domstor_table thead td.domstor_building_material_head, table.domstor_table tbody td.domstor_balcony, table.domstor_table thead td.domstor_balcony_head  {
+       display: block;
+       font-size: 1em;
+    } */
+    .table-responsive {
+        overflow: hidden;
+        border: 0;
+    }
+    table.domstor_table {
+        thead, tbody, th, td, tr {
+            display: block;
+            font-size: 1em;
+        }
+    }
+    /* Скрываем заголовки */
+    table.domstor_table thead, table.domstor_table thead tr {
+       position: absolute;
+       top: -9999px;
+       left: -9999px;
+       display: none !important;
+    }
+
+    /* table.domstor_table tr {
+       margin-bottom: 10px;
+       border: 2px solid #daddee;
+       border-bottom: 1px solid #daddee;
+    } */
+    
+    table.domstor_table tr {
+        border: 2px solid $color_border_fields;
+        display: table;
+        margin: 0 auto 1em auto;
+        width: 99%;
+    }
+
+    table.domstor_table thead td,  table.domstor_table tbody td, table.domstor_table td.tdexch {
+       /* Ведет себя как строка */
+       /* border: none;
+       border-bottom: 1px solid #daddee;
+       position: relative;
+       padding: 3px 0;
+       padding-left: 50%;
+       background: fuchsia;
+       text-align: left !important;
+       min-height: 30px; */
+       border: none !important;
+        border-bottom: 1px solid $color_border_fields !important;
+        position: relative;
+        display: table-row;
+        width: 100% !important;
+        text-align: left;
+        padding: 0;
+        white-space: normal !important;
+        /* background: $bg_filter_realt; */
+    }
+    table.domstor_table tbody td:last-child {
+        border-bottom: 0 !important;
+    }
+    /* table.domstor_table tbody tr:hover td {
+        border: 0;
+        border-bottom: 1px solid #eee;
+    } */
+    /* table.domstor_table tbody td.domstor_type {
+        max-width: 100%;
+    } */
+    table.domstor_table tbody td.domstor_thumb img {
+        margin-top: .3em;
+    }
+    /* table.domstor_table td.domstor_wctelecom, table.domstor_table td.domstor_contact,
+    table.domstor_table td.domstor_agency {
+       display: block;
+    } */
+    /* table.domstor_table td.domstor_wctelecom {
+       height: 20px;
+    } */
+    /* table.domstor_table .wt-min {
+       margin: 0;
+       padding: 0;
+       display: inline;
+    } */
+    /* table.domstor_table td span {
+       padding-left: 0px;
+    } */
+
+    table.domstor_table td:before, table.domstor_table td span {
+       /* Теперь как заголовок таблицы */
+       /* position: absolute;
+       padding: 0px 0 3px 3px;
+       top: 0;
+       left: 0;
+       width: 40%;
+       padding-right: 10px;
+       background: #e0e0e0;
+       margin-top: 2px; */
+        position: relative;
+        width: 49%;
+        display: table-cell;
+        padding: .3em .3em;
+        vertical-align: middle !important;
+        /* content: "\00A0"; */
+    }
+    /*table.domstor_table td:after {
+        content: "\00A0";
+    }*/
+    /* table.domstor_table td.domstor_favour input.favour_trigger {
+       margin: 3px 0 3px 0;
+    } */
+    table.domstor_table.flat_exchange tr.with_demand, 
+    table.domstor_table.house_exchange tr.with_demand {
+       border-bottom: 0;
+       margin-bottom: 0;
+    }
+    table.domstor_table.flat_exchange tr.exchange_demand, 
+    table.domstor_table.house_exchange tr.exchange_demand {
+       border-top: 1px solid $color_border_fields;
+    }
+    
+    table.domstor_table.flat_exchange td.zayav:before, 
+    table.domstor_table.house_exchange td.zayav:before,
+    table.domstor_table.flat_exchange td.zayav:after, 
+    table.domstor_table.house_exchange td.zayav:after,
+    table.domstor_table.flat_exchange td.zayav2:before, 
+    table.domstor_table.house_exchange td.zayav2:before,
+    table.domstor_table.flat_exchange td.zayav2:after, 
+    table.domstor_table.house_exchange td.zayav2:after {
+       display: none;
+       
+       p {
+           padding: 0.2em 0.3em !important;
+       }
+    }
+    table.domstor_table.flat_exchange td.zayav, 
+    table.domstor_table.house_exchange td.zayav,
+    table.domstor_table.flat_exchange td.zayav2, 
+    table.domstor_table.house_exchange td.zayav2 {
+        
+        p {
+           padding: 0.2em 0.3em;
+       }
+    }
+    
+    /* table.domstor_table.flat_exchange td.zayav2, table.domstor_table.house_exchange td.zayav2 {
+       border-top: 0;
+    } */
+
+    /* Заголовки*/
+    table.domstor_table td:nth-of-type(1):before { 
+        content: "Код"; 
+    }
+    table.domstor_table.flat_exchange tr.exchange_demand td:nth-of-type(1), 
+    table.domstor_table.house_exchange tr.exchange_demand td:nth-of-type(1) {
+        display: none;
+    }
+    /* table.domstor_table td.domstor_thumb:after {
+        content: "\00A0";
+    } */
+    table.domstor_table td:nth-of-type(2):before { 
+        content: "Фото";
+    }
+    
+    table.domstor_table td:nth-of-type(3):before,
+    table.domstor_table.flat_purchase td:nth-of-type(2):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(2):before,
+    table.domstor_table.house_sale td:nth-of-type(4):before,
+    table.domstor_table.house_rent td:nth-of-type(4):before,
+    table.domstor_table.house_exchange td:nth-of-type(4):before,
+    table.domstor_table.house_purchase td:nth-of-type(3):before,
+    table.domstor_table.house_rentuse td:nth-of-type(3):before { content: "Число комнат"; }
+    
+    table.domstor_table td:nth-of-type(4):before,
+    table.domstor_table.flat_purchase td:nth-of-type(3):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(3):before,
+    table.domstor_table.house_sale td:nth-of-type(3):before,
+    table.domstor_table.house_rent td:nth-of-type(3):before,
+    table.domstor_table.house_exchange td:nth-of-type(3):before,
+    table.domstor_table.house_purchase td:nth-of-type(2):before,
+    table.domstor_table.house_rentuse td:nth-of-type(2):before { content: "Тип"; }
+    
+    table.domstor_table.land_sale td:nth-of-type(3):before,
+    table.domstor_table.land_rent td:nth-of-type(3):before,
+    table.domstor_table.land_purchase td:nth-of-type(2):before,
+    table.domstor_table.land_rentuse td:nth-of-type(2):before { content: "Тип участка"; }
+    
+    table.domstor_table.garage_sale td:nth-of-type(3):before,
+    table.domstor_table.garage_rent td:nth-of-type(3):before,
+    table.domstor_table.garage_purchase td:nth-of-type(2):before,
+    table.domstor_table.garage_rentuse td:nth-of-type(2):before { content: "Вид гаража"; }
+    
+    table.domstor_table.commerce_sale td:nth-of-type(3):before,
+    table.domstor_table.commerce_rent td:nth-of-type(3):before,
+    table.domstor_table.commerce_purchase td:nth-of-type(2):before,
+    table.domstor_table.commerce_rentuse td:nth-of-type(2):before { content: "Назначение"; }
+    
+    table.domstor_table.garage_sale td:nth-of-type(4):before,
+    table.domstor_table.garage_rent td:nth-of-type(4):before { content: "Вид размещения"; }
+    
+    /* table.domstor_table td:nth-of-type(5):before,
+    table.domstor_table.flat_purchase td:nth-of-type(4):before { content: "Материал строения"; } */
+    
+    table.domstor_table.garage_sale td:nth-of-type(5):before,
+    table.domstor_table.garage_rent td:nth-of-type(5):before { content: "Материал стен"; }
+    
+    table.domstor_table td:nth-of-type(5):before,
+    table.domstor_table.flat_purchase td:nth-of-type(4):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(4):before,
+    table.domstor_table.house_sale td:nth-of-type(6):before,
+    table.domstor_table.house_rent td:nth-of-type(6):before,
+    table.domstor_table.house_exchange td:nth-of-type(6):before,
+    table.domstor_table.house_purchase td:nth-of-type(4):before,
+    table.domstor_table.house_rentuse td:nth-of-type(4):before,
+    table.domstor_table.garage_sale td:nth-of-type(6):before,
+    table.domstor_table.garage_rent td:nth-of-type(6):before,
+    table.domstor_table.garage_purchase td:nth-of-type(3):before,
+    table.domstor_table.garage_rentuse td:nth-of-type(3):before,
+    table.domstor_table.land_sale td:nth-of-type(5):before,
+    table.domstor_table.land_rent td:nth-of-type(5):before,
+    table.domstor_table.land_purchase td:nth-of-type(4):before,
+    table.domstor_table.land_rentuse td:nth-of-type(4):before,
+    table.domstor_table.commerce_sale td:nth-of-type(4):before,
+    table.domstor_table.commerce_rent td:nth-of-type(4):before,
+    table.domstor_table.commerce_purchase td:nth-of-type(3):before,
+    table.domstor_table.commerce_rentuse td:nth-of-type(3):before { content: "Район"; }
+    
+    table.domstor_table.region td:nth-of-type(6):before { content: "Город/Район"; }
+    
+    table.domstor_table td:nth-of-type(6):before,
+    table.domstor_table.house_sale td:nth-of-type(7):before,
+    table.domstor_table.house_rent td:nth-of-type(7):before,
+    table.domstor_table.house_exchange td:nth-of-type(7):before,
+    table.domstor_table.garage_sale td:nth-of-type(7):before,
+    table.domstor_table.garage_rent td:nth-of-type(7):before,
+    table.domstor_table.land_sale td:nth-of-type(6):before,
+    table.domstor_table.land_rent td:nth-of-type(6):before,
+    table.domstor_table.commerce_sale td:nth-of-type(5):before,
+    table.domstor_table.commerce_rent td:nth-of-type(5):before { content: "Адрес"; }
+    
+    table.domstor_table.land_purchase td:nth-of-type(5):before,
+    table.domstor_table.land_rentuse td:nth-of-type(5):before { content: "Местоположение"; }
+    
+    table.domstor_table td:nth-of-type(7):before,
+    table.domstor_table.flat_purchase td:nth-of-type(5):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(5):before,
+    table.domstor_table.commerce_sale td:nth-of-type(6):before,
+    table.domstor_table.commerce_rent td:nth-of-type(6):before { content: "Этаж"; }
+    
+    table.domstor_table.house_sale td:nth-of-type(5):before,
+    table.domstor_table.house_rent td:nth-of-type(5):before,
+    table.domstor_table.house_exchange td:nth-of-type(5):before { content: "Этажей"; }
+    
+    table.domstor_table td:nth-of-type(8):before,
+    table.domstor_table.house_sale td:nth-of-type(8):before,
+    table.domstor_table.house_rent td:nth-of-type(8):before,
+    table.domstor_table.house_exchange td:nth-of-type(8):before { content: "Площадь, кв.м. (общ./жил./кух.)"; }
+    
+    table.domstor_table.house_purchase td:nth-of-type(5):before,
+    table.domstor_table.house_rentuse td:nth-of-type(5):before { content: "Площадь дома"; }
+    
+    table.domstor_table.house_sale td:nth-of-type(9):before,
+    table.domstor_table.house_rent td:nth-of-type(9):before,
+    table.domstor_table.house_exchange td:nth-of-type(9):before,
+    table.domstor_table.house_purchase td:nth-of-type(5):before,
+    table.domstor_table.house_rentuse td:nth-of-type(5):before,
+    table.domstor_table.land_sale td:nth-of-type(4):before,
+    table.domstor_table.land_rent td:nth-of-type(4):before,
+    table.domstor_table.land_purchase td:nth-of-type(3):before,
+    table.domstor_table.land_rentuse td:nth-of-type(3):before { content: "Площадь участка"; }
+    
+    table.domstor_table.garage_sale td:nth-of-type(8):before,
+    table.domstor_table.garage_rent td:nth-of-type(8):before { content: "Размер, м (ШхДхВ)"; }
+    
+    table.domstor_table.garage_sale td:nth-of-type(9):before,
+    table.domstor_table.garage_rent td:nth-of-type(9):before,
+    table.domstor_table.garage_purchase td:nth-of-type(4):before,
+    table.domstor_table.garage_rentuse td:nth-of-type(4):before { content: "Погреб"; }
+    
+    table.domstor_table.land_sale td:nth-of-type(7):before,
+    table.domstor_table.land_rent td:nth-of-type(7):before,
+    table.domstor_table.land_purchase td:nth-of-type(6):before,
+    table.domstor_table.land_rentuse td:nth-of-type(6):before { content: "Жилые постройки"; }
+    
+    /* table.domstor_table td:nth-of-type(10):before { content: "Балкон, лоджия"; } */
+    
+    table.domstor_table td:nth-of-type(9):before,
+    table.domstor_table.house_sale td:nth-of-type(10):before,
+    table.domstor_table.house_exchange td:nth-of-type(10):before,
+    table.domstor_table.garage_sale td:nth-of-type(10):before,
+    table.domstor_table.land_sale td:nth-of-type(8):before,
+    table.domstor_table.commerce_sale td:nth-of-type(7):before { content: "Цена"; }
+    
+    table.domstor_table.flat_purchase td:nth-of-type(6):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(6):before,
+    table.domstor_table.house_purchase td:nth-of-type(6):before,
+    table.domstor_table.house_rentuse td:nth-of-type(6):before,
+    table.domstor_table.garage_purchase td:nth-of-type(5):before,
+    table.domstor_table.garage_rentuse td:nth-of-type(5):before,
+    table.domstor_table.land_purchase td:nth-of-type(7):before,
+    table.domstor_table.land_rentuse td:nth-of-type(7):before,
+    table.domstor_table.commerce_purchase td:nth-of-type(4):before,
+    table.domstor_table.commerce_rentuse td:nth-of-type(4):before { content: "Бюджет"; }
+    
+    table.domstor_table.flat_rent td:nth-of-type(9):before,
+    table.domstor_table.house_rent td:nth-of-type(10):before,
+    table.domstor_table.garage_rent td:nth-of-type(10):before,
+    table.domstor_table.land_rent td:nth-of-type(8):before,
+    table.domstor_table.commerce_rent td:nth-of-type(7):before { content: "Арендная ставка"; }
+    
+    table.domstor_table td:nth-of-type(10):before,
+    table.domstor_table.flat_purchase td:nth-of-type(7):before,
+    table.domstor_table.flat_rentuse td:nth-of-type(7):before,
+    table.domstor_table.house_sale td:nth-of-type(11):before,
+    table.domstor_table.house_rent td:nth-of-type(11):before,
+    table.domstor_table.house_exchange td:nth-of-type(11):before,
+    table.domstor_table.house_purchase td:nth-of-type(7):before,
+    table.domstor_table.house_rentuse td:nth-of-type(7):before,
+    table.domstor_table.garage_sale td:nth-of-type(11):before,
+    table.domstor_table.garage_rent td:nth-of-type(11):before,
+    table.domstor_table.garage_purchase td:nth-of-type(6):before,
+    table.domstor_table.garage_rentuse td:nth-of-type(6):before,
+    table.domstor_table.land_sale td:nth-of-type(9):before,
+    table.domstor_table.land_rent td:nth-of-type(9):before,
+    table.domstor_table.land_purchase td:nth-of-type(8):before,
+    table.domstor_table.land_rentuse td:nth-of-type(8):before,
+    table.domstor_table.commerce_sale td:nth-of-type(8):before,
+    table.domstor_table.commerce_rent td:nth-of-type(8):before,
+    table.domstor_table.commerce_purchase td:nth-of-type(5):before,
+    table.domstor_table.commerce_rentuse td:nth-of-type(5):before { content: "Контакты"; }
+}
+
+/* @media only screen and (max-width: 479px) {
+    table.domstor_table td:nth-of-type(3):before,
+    table.domstor_table.flat_purchase td:nth-of-type(2):before { content: "Комнат"; }
+    
+    table.domstor_table td:nth-of-type(10):before { content: "Балкон,лоджия"; }
+} */
+.domstor_pagination {
+    position: relative;
+    width: 100%;
+    
+    p {
+        line-height: 3em;
+    }
+    
+    span {
+           padding: 5px 10px;
+           background: #f0f0f0;
+           color: #2d2d2d;
+        }
+    a {
+        padding: 5px 10px;
+
+        /* &:visited {
+            color: $blue;
+        }
+        &:hover {
+            color: #ed1c24;
+        } */
+    }
+    em {
+        margin: 0 1em;
+        font-size: 1.6em;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.object_page {
+   position: relative;
+   width: 100%;
+   
+    div {
+        padding-top: 1em;
+        
+        h3 {
+            padding-bottom: 0;
+        }
+        
+        &.domstor_object_head {
+            padding-top: 0;
+        }
+        &.domstor_object_demands {
+            position: relative;
+            float: right;
+            width: 30%;
+            
+            @media only screen and (max-width: 767px) {
+                float: none;
+                width: 100%;
+                padding-bottom: 1em;
+            }
+            
+            
+        }
+        &.domstor_images {
+            padding-top: 0;
+            
+            a {
+                text-decoration: none;
+                position: relative;
+                display: inline-block;
+            }
+            img {
+                margin: 0 5px 10px 0;
+                width: 80px;
+                height: 80px;
+            }
+        }
+        &.domstor_map {
+            img {
+                margin: 0 5px 10px 0;
+                width: 80px;
+                height: 80px;
+            }
+        }
+        &.domstor_object_common {
+            div {
+                @include inline_block;
+                padding-right: 60px;
+                
+                p {
+                    padding: .3em .8em;
+                    
+                    &:nth-child(2) {
+                        background: $bg_object_info;
+                    }
+                }
+            }
+        }
+        table {
+            width: 100%;
+            font-size: 1.15em;
+            
+            th {
+                width: 45%;
+                background: $bg_object_head;
+                text-align: left;
+                font-weight: normal;
+                color: $color_object_head;
+            }
+            td {
+                width: 55%;
+                background: $bg_object_info;
+                z-index: 10;
+            }
+            th, td {
+                padding: .3em .6em;
+                border: 2px solid #fff;                
+            }
+                        
+            tr:hover {
+                background: #a5b2c4; 
+                z-index: 100;
+                
+                th, td {
+                    background: none;
+                    color: #fff;
+                }
+            
+            }
+        }
+        &.domstor_object_comments {
+            
+            p {
+                padding: .3em .8em;
+                background: $bg_object_info;
+            }
+        }
+        &.domstor_object_contacts {
+            
+            table {
+                width: auto;
+                
+                @media only screen and (max-width: 767px) {
+                    display: block;
+                }
+                
+                td {
+                    width: auto;
+                    padding-right: 2em;
+                    
+                    @media only screen and (max-width: 767px) {
+                        padding-right: .8em;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        display: inline-block;
+                    }
+                    
+                    &:nth-child(2) {
+                        background: none;
+                        padding-left: 2em;
+                        vertical-align: bottom;
+                        
+                        @media only screen and (max-width: 767px) {
+                            padding-left: .6em;
+                        }
+                    }
+
+                    p {
+                        font-size: 1em;
+                        padding-bottom: .4em
+                    }
+                }
+                tr:hover {
+                    background: none;
+                    
+                    td {
+                        background: $bg_object_info;
+                        color: $main_color;
+                        
+                        &:nth-child(2) {
+                            background: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    p.prnxt {
+        margin-top: 2.5em;
+        padding: 0;
+        line-height: 1.9em;
+        
+        @media only screen and (max-width: 767px) {
+            margin-top: 1.5em;
+        }
+        
+        a {
+            padding: 5px 10px;
+            white-space: nowrap;
+            text-decoration: none;
+            
+            span {
+                text-decoration: underline;
+            }
+            
+            /* &:visited {
+                color: $blue;
+            }
+            &:hover {
+                color: #ed1c24;
+            } */
+        }
+    }
+}

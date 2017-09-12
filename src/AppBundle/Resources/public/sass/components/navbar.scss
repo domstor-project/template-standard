@@ -1,0 +1,263 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+.container-fluid, .navbar-collapse, .navbar-collapse.collapsing {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.navbar-header {
+    display: none;
+    
+    @media only screen and (max-width: 767px) {
+        display: block;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+.navbar-toggle .icon-bar {
+    background: #343434;
+    width: 30px;
+    height: 3px;
+}
+header {
+    position: relative;
+    height: auto;
+    
+    @media only screen and (max-width: 767px) {
+       height: 50px; 
+    }
+
+    nav.navbar, .cd-main-nav-wrapper {
+        @include navbar_reset;
+        width: 100%;
+
+        ul.cd-main-nav {
+            height: auto;
+            line-height: 1em;
+            padding: 0;
+            text-align: left;
+            overflow: visible;
+            
+            @media only screen and (max-width: 767px) {
+                width: auto;
+                padding: 50px 20px;
+                background: #282828;
+            }
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+                margin-left: 1px;
+                line-height: 2.3em;
+                padding: 0;
+                font-size: 1.05em;
+
+                a {
+                    color: $color_link_menu;
+                    padding: 3px 15px;
+                    text-decoration: none;
+                    white-space: normal;
+
+                    &:visited {
+                        color: $color_link_menu;
+                    }
+                    &:hover {
+                        color: $color_link_hover_menu;
+                        background: $bg_link_hover_menu;
+                        border-radius: 20px;
+                    }
+                }
+                &.current {
+
+                    span {
+                        padding: 3px 15px;
+                        background: $bg_cur_menu;
+                        border-radius: 20px;
+                    }
+                }
+                &.open {
+                    a {
+                        color: $color_link_hover_menu;
+                        background: $bg_link_hover_menu;
+                        border-radius: 20px;
+                    }
+                    .dropdown-menu {
+                        box-shadow: none;
+                        border: 0;
+                        border-radius: 0;
+                        font-size: 1em;
+                        background: $bg_dropdown_menu;
+                        padding: 1.5em;
+                        min-width: 200px;
+
+                        li {
+                            display: block;
+                            margin-left: 0;
+                            padding-bottom: .8em;
+
+                            a {
+                                color: $color_dropdown_link_menu;
+                                padding: 0;
+                                text-decoration: underline;
+                                background: none;
+
+                                &:visited {
+                                    color: $color_dropdown_link_menu;
+                                }
+                                &:hover {
+                                    color: $color_dropdown_link_hover_menu;
+                                    background: none;
+                                    border-radius: 0;
+                                }
+                            }
+
+                            &.current {
+
+                                span {
+                                    padding: 0;
+                                    background: none;
+                                    border-radius: 0;
+                                    color: $color_dropdown_cur_menu;
+                                } 
+                            }
+                        }
+                    }
+                }            
+            }
+        }
+    }
+    .cd-nav-trigger {
+        color: #343434;
+        width: 30px;
+        height: 30px;
+
+        span {
+            background-color: #343434;
+            height: 3px;
+            width: 30px;
+            margin: 0;
+            left: 0;
+            transition: none;
+            
+            &::before, &::after {
+                background-color: #343434;
+                transition: none;
+            }
+        }
+    }
+    
+    &.nav-is-visible {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        left: auto;
+        transform: none;
+        z-index: 102;
+        
+        .cd-nav-trigger {
+            
+            span {
+                transition: none;
+                
+                &::before, &::after {
+                    background-color: #fff;
+                    transition: none;
+                } 
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    ul.cd-main-nav {
+        width: auto;
+        padding: 50px 20px;
+        background: #282828;
+        z-index: 101;
+        
+        li {
+            list-style-type: none;
+            display: block;
+            margin: 0;
+            line-height: 1em;
+            padding: .6em 50px .6em 0;
+            font-size: 1.1em;
+            border-bottom: 1px solid #5a5a5a;
+            
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            a {
+                color: #fff;
+                padding: 0;
+                text-decoration: none;
+                display: block;
+                white-space: normal;
+
+                &:visited {
+                    color: #fff;
+                }
+                &:hover {
+                    color: $red;
+                }
+            }
+            &.current {
+
+                span {
+                    color: $color_cur_menu_mobile;
+                }
+            }
+            &.open {
+                a {
+                    color: $red;
+                }
+                .dropdown-menu {
+                    position: relative;
+                    top: 0;
+                    box-shadow: none;
+                    border: 0;
+                    border-radius: 0;
+                    font-size: 1em;
+                    float: none;
+                    background: #282828;
+                    padding-left: 1em;
+
+                    li {
+                        display: block;
+                        margin-left: 0;
+                        border: 0;
+                        padding: .4em 0;
+                        font-size: 1em;
+
+                        a {
+                            color: $white;
+                            padding: 0;
+                            text-decoration: none;
+                            background: none;
+                        
+                            &:visited {
+                                color: $white;
+                            }
+                            &:hover {
+                                color: $red;
+                                background: none;
+                                border-radius: 0;
+                            }
+                        }
+
+                        &.current {
+
+                            span {
+                                padding: 0;
+                                background: none;
+                                border-radius: 0;
+                                color: $color_cur_menu_mobile;
+                            } 
+                        }
+                    }
+                }
+            }            
+        }
+    }
+}

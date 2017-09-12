@@ -1,0 +1,65 @@
+sonata_media:
+    class:
+        media:              AppBundle\Entity\Media
+        gallery:            AppBundle\Entity\Gallery
+        gallery_has_media:  AppBundle\Entity\GalleryHasMedia
+    db_driver: doctrine_orm
+    default_context: default
+    contexts:
+        default:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+        employee:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                home: { width: 254, height: 167, quality: 100}
+        partner:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                home: { width: 192, height: 80, quality: 100}                
+        special_offer:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                home: { width: 254, height: 167, quality: 100}
+        slider:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                home: { width:  1920, height: 425, quality: 100}
+
+    cdn:
+        server:
+            path: /uploads/media
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     true
+            
+    providers:
+        file:
+            service:    sonata.media.provider.file
+            resizer:    false
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['pdf', 'txt', 'rtf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pttx', 'odt', 'odg', 'odp', 'ods', 'odc', 'odf', 'odb', 'csv', 'xml']
+            allowed_mime_types: ['application/pdf', 'application/x-pdf', 'application/rtf', 'text/html', 'text/rtf', 'text/plain']
+
+        image:
+            service:    sonata.media.provider.image
+            resizer:    sonata.media.resizer.simple # sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['jpg', 'png', 'jpeg']
+            allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png']

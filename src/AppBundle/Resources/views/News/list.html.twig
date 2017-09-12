@@ -1,0 +1,22 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. Новости{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ url('app_home_index') }}">Главная</a> / Новости
+{% endblock %}
+
+{% block content %}
+    <h1>Новости</h1>
+    <div class="news_home">
+        <div class="news_content">
+        {% for row in pagination %}
+                <div class="news_block"><!-- Блок новости -->
+                    <p><a href="{{ path('app_news_show', {post: row.id}) }}">{{ row.title|raw }}</a></p>
+                    <p class="data">{{ row.publicationDateStart|date('d.m.Y') }}</p>
+                </div>
+        {% endfor %}    
+        </div>
+    </div>
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

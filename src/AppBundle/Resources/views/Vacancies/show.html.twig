@@ -1,0 +1,10 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. Специалист по коммерческой недвижимости{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ url('app_home_index') }}">Главная</a> / <a href="{{ url('app_vacancies_list') }}">Вакансии</a> / Специалист по коммерческой недвижимости
+{% endblock %}
+{% block content %}
+{{ vacancy.description|raw }}    
+{% endblock %}

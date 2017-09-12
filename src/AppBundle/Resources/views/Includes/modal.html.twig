@@ -1,0 +1,63 @@
+<div class="modal fade" id="modalRequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Подать заявку</h4>
+            </div>
+            <div id="showAfterSendingRequest" style="display:none;">
+                <p style="padding: 1em;">Спасибо за обращение!<br /> В ближайшее время мы с вами обязательно свяжемся!</p>
+            </div>
+            <div class="form" id="hiddenAfterSendingRequest">
+                <form class="form-horizontal callback" role="form" id="request" action="" method="post">
+                    <div class="modal-body" id="hidebody">
+                        <div class="form-group">
+                            <label for="InputName" class="sr-only">Имя</label>
+                                <input type="text" class="form-control input" id="InputName" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputPhone" class="sr-only">Телефон</label>
+                            <input type="tel" class="form-control input" id="InputPhone" name="phone" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputEmail" class="sr-only">Эл.почта</label>
+                            <input type="email" class="form-control input" id="InputEmail" name="email" placeholder="Ваша эл.почта" required>
+                        </div>
+                        <div class="form-group">
+                            <label  class="sr-only" for="exampleInputMessage">Сообщение</label>
+                            <textarea class="form-control textarea" rows="3" id="exampleInputMessage" name="message" placeholder="Сообщение" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-input" required="required" /> Я соглашаюсь с <a href="" data-toggle="modal" data-target="#exampleModalLong">политикой обработки персональных данных</a>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedback_kcaptcha_id" class="sr-only">Введите символы с картинки</label>
+                            <img src="data:image/jpeg;base64,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" id="feedback_kcaptcha_id_img" alt="captcha" /><input  required type="text" name="feedback[kcaptcha]" id="feedback_kcaptcha_id" value="" class="form-control input" placeholder="Введите символы" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn"><span>Отправить заявку</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body privacy_policy">
+                {% include 'AppBundle:Includes:privacyPolicy.html.twig' %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

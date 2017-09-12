@@ -1,0 +1,58 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. Объекты{% endblock %}
+
+
+{% block content %}
+    <h1>Объекты</h1>    
+    <div class="object_inners">
+        <h3>Коммерческая недвижимость</h3>
+        <div class="block_object">
+            {% for obj, actions in countsCom %}
+                {% if actions is not empty %}
+                <div>
+                    <h4>{{ tp.type(obj) }}</h4>
+                    <ul>
+                    {% for act, count in actions %}
+                        <li><a href="{{ path('app_objects_list', {object: obj, action: act}) }}">{{ tp.action(act) }}</a> <span>({{ count }})</span></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        
+        <h3>Жилая недвижимость</h3>
+        <div class="block_object">
+            {% for obj, actions in countsLiv %}
+                {% if actions is not empty %}
+                <div>
+                    <h4>{{ tp.type(obj) }}</h4>
+                    <ul>
+                    {% for act, count in actions %}
+                        <li><a href="{{ path('app_objects_list', {object: obj, action: act}) }}">{{ tp.action(act) }}</a> <span>({{ count }})</span></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    
+        <h3>Недвижимость Новосибирской области</h3>
+        <div class="block_object">
+            {% for obj, actions in counts42 %}
+                {% if actions is not empty %}
+                <div>
+                    <h4>{{ tp.type(obj) }}</h4>
+                    <ul>
+                    {% for act, count in actions %}
+                        <li><a href="{{ path('app_objects_list', {object: obj, action: act, ref_city: 42}) }}">{{ tp.action(act) }}</a> <span>({{ count }})</span></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

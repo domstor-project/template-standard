@@ -1,0 +1,56 @@
+@mixin global_reset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+@mixin navbar_reset {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+    float: none;
+    min-width: 1px;
+    padding: 0;
+    margin: 0;
+    list-style: none outside none;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+@mixin border($width: 1px, $style: solid, $color) {
+    border: $width $style $color;
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin box-shadow($shadows...) {
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+@mixin width_block ($width) {
+    position: relative;
+    width: $width;
+    margin: 0 auto;
+}
+@mixin absolute_block ($width, $height, $top, $left) {
+    position: absolute;
+    display: block;
+    width: $width;
+    height: $height;
+    top: $top;
+    left: $left;
+}
+@mixin inline_block ($vertical_aligh: top) {
+    position: relative;
+    display: inline-block;
+    vertical-align: $vertical_aligh;
+}

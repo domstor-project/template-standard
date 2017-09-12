@@ -1,0 +1,395 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+    
+
+.middle_inners {
+    position: relative;
+    width: 1110px;
+    margin: 0 auto;
+    padding: 0 0 3em 0;
+
+    @media only screen and (max-width: 1199px) {
+        width: 940px;
+    }
+    @media only screen and (max-width: 991px) {
+        width: 740px;
+    }
+    @media only screen and (max-width: 767px) {
+        width: 90%;
+    }
+    @media only screen and (max-width: 479px) {
+        width: 95%;
+    }
+    
+    h1 {
+        padding-top: 1em;
+    }
+    h2, h3, h4 {
+        padding-bottom: .5em;
+        
+    }
+    p {
+        font-size: 1em;
+        
+        &.data, &.signature {
+            color: #acacac;
+            font-size: .9em;
+        }
+    }
+
+    ul, ol {
+        font-size: 1em; 
+        padding-bottom: .5em;
+        padding-left: 1.5em;
+
+        li {
+            padding-bottom: .5em;
+
+            ul, ol {
+               font-size: 1em; 
+               padding-top: .5em;
+               padding-bottom: 0;
+
+               li:last-child {
+                   padding-bottom: 0;
+               }
+            }
+            ul {
+                padding-left: 1.5em;
+            }
+        }
+    }
+    ul li {
+        list-style-type: none;  
+        position: relative;
+        padding-left: 20px;      
+    }
+    ul li:before {
+        color: #63cac9;
+        content: "●";
+        /* padding-right: .3em; */
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    ul.after_float li {
+        overflow: hidden;
+    }
+    ol {
+        padding-left: 2.5em;
+
+        li ul {
+            padding-left: 1em;
+        }
+    }
+    
+    .breadcrumbs {
+        position: relative;
+        width: 100%;
+        padding: 1em 0;
+        color: #989898;
+        
+        a, a:visited {
+            color: #989898;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+    }
+    .table-responsive {
+        border: 0;
+        margin: 0;
+    }
+    table.txt {
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+        margin: .5em 0 1em 0;
+
+        thead {
+            th, td {
+                background: #d9e2f0;
+                color: #000;
+                text-align: center;
+            }
+        }
+        th, td {
+            padding: .4em;
+            vertical-align: middle; 
+            font-size: 1.15em;
+            width: auto;
+            border: 1px solid #daddee;
+        }
+        td {
+            border: 1px solid #daddee;
+        }
+        tr:hover {
+           background: #f2f7ff; 
+        }
+
+        /* &.consalt {
+            margin-top: 1.5em;
+            tr td:first-child {
+                text-align: center;
+            }
+        } */
+    }
+    
+    h1 + table {
+        margin-top: 0;
+    }
+    h3 + table {
+        margin-top: .2em;
+    }
+    .center {
+        text-align: center;
+    }
+    .fotogalery {
+        position: relative;
+        padding-top: 1em;
+
+        @media only screen and (max-width: 991px) {
+            text-align: center;
+        }
+
+        a {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+        img {
+            height: 150px;
+            margin: 0 1.2em 1.2em 0;
+            max-width: 100%;
+
+            &.nosize {
+                height: auto;
+            }
+        }
+    }
+    
+    h3 + .fotogalery {
+       padding-top: 0; 
+    }
+    a.back {
+        position: relative;
+        color: #61c0bb;
+        border: 2px solid #61c0bb;
+        text-decoration: none;
+        font-size: 1.2em;
+        display: inline-block;
+        z-index: 10000;
+        padding: .3em 1.2em .4em 1em;
+        vertical-align: top;
+        margin-top: 1.5em;
+
+        &:hover {
+            color: #026d67;
+            background: #61c0bb;
+        }
+    }
+    .rght {
+        position: relative;
+        float: right;
+        padding: .7em 0 .2em 1em;
+
+        @media only screen and (max-width: 599px) {
+            float: none;
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+    .lft {
+        position: relative;
+        float: left;
+        padding: .7em 1em .2em 0;
+
+        @media only screen and (max-width: 599px) {
+            float: none;
+            padding-right: 0;
+            text-align: center;
+        }
+    }
+    .clear {
+        clear: both;
+    }
+    .full_width {
+        padding-bottom: 1em;
+        
+        p {
+            padding-bottom: 0;
+        }
+        img {
+            width: auto;
+            max-width: 100%;
+        }
+    }
+    
+    
+    /* НОВОСТИ */
+    @import "../components/news";
+    .news_home {
+        padding-top: 0;
+        
+        .news_content {
+            text-align: left;
+            
+            .news_block {
+                margin-left: 0;
+                padding-left: 0;
+                margin-right: 20px;
+            }
+            p.archive_news {
+                display: none;
+            }
+        }
+    }
+    
+    /* ОТЗЫВЫ */
+    .reviews_inners {
+        position: relative;
+        width: 100%;
+        padding: 0 0 3em 0;
+        
+        .review {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            width: 254px;
+            padding: 10px 10px 10px 0;
+            margin: 15px 20px 15px 0;
+            text-align: left;
+            
+            p {
+                padding: 0 0 .5em 0;
+                color: $color_reviews;
+
+                &.data, &.signature {
+                    padding: 0;
+                    font-size: .9em;
+                    color: $color_reviews_data;
+                }
+
+                a {
+                    color: $color_reviews;
+
+                    &:hover {
+                        color: $color_reviews;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    /* ВАКАНСИИ */
+    .vacancy_inners {
+        position: relative;
+        width: 100%;
+        padding: 0 0 3em 0;
+        
+        .vacancy {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            width: 254px;
+            padding: 10px;
+            margin: 15px 20px 15px 0;
+            text-align: left;
+            min-height: 180px;
+            border: 1px solid #dedede;
+            
+            h4 {
+                font-size: 1.05em;
+                padding: 0 0 1em 0;
+                font-weight: bold;
+                color: $color_vacancy;
+            }
+            p {
+                padding: 0 0 .2em 0;
+                color: $color_vacancy;
+                line-height: 1.4em;
+            }
+            a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 254px;
+                height: 100%;
+
+                /* @media only screen and (max-width: 479px) {
+                    width: 247px;
+                } */
+
+            }
+            &:hover {
+                background: $bg_special_hover;
+                
+                h4, p {
+                    color: $color_special_hover;
+                }
+            }
+        }
+    }
+    
+    /* ПОСТРАНИЧНАЯ НАВИГАЦИЯ */
+    .pagination {
+        position: relative;
+        width: 100%;
+        
+        span.cur {
+           padding: 5px 10px;
+           background: #f0f0f0;
+           color: #2d2d2d;
+           border-radius: 20px;
+        }
+        a {
+            padding: 5px 10px;/* 
+            
+            &:visited {
+                color: $blue;
+            }
+            &:hover {
+                color: #ed1c24;
+            } */
+        }
+        em {
+            margin: 0 1em;
+            font-size: 1.6em;
+            
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+ }   
+    
+
+/* КАРТА */
+.map_home {
+    position: relative;
+    width: 100%;
+    height: 390px;
+
+    .ymaps-2-1-29-controls__toolbar {
+        display: none;
+    }
+    .ymaps-2-1-29-islets_gotoymaps {
+        display: none;
+    }
+    /* .ymaps_https___api_maps_yandex_ru_2_1_29_release__islands_icon___1E98FF {
+        background-image: url(/bundles/app/images/template/map-marker.png) !important;
+        width: 32px !important;
+        height: 49px !important;
+        top: -50px !important;
+        background-size: 32px 49px;
+    } */
+}
+.fancybox-opened .fancybox-title {
+    display: none !important;
+}
+
+
+/* СТРАНИЦА ПОИСКА */
+@import "../components/search";

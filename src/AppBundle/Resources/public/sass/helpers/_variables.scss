@@ -1,0 +1,131 @@
+
+$main_size: 15px;
+$main_font: 'PT Sans' !important;
+
+$main_color: #505050; // основной цвет текста
+$headers_color: #d8361f; // цвет заголовков на белом фоне 
+$headers_color_bg: #fff;  // цвет заголовков на цветном фоне
+$link_unvisited: #1cb4b3; // цвет непосещенных ссылок 
+$link_hover: #d8361f; // цвет ссылок при наведении
+$link_visited: #848484; // цвет посещенных ссылок
+
+
+// Шапка и подвал
+$bg_contact_social: #f0f0f0; // фон контактов и соц.кнопок
+$color_contact: #8b8b8b; // цвет текста контактов
+
+
+// Меню
+$color_link_menu: #505050; // цвет ссылок
+$color_link_hover_menu: #fff; // цвет ссылок при наведении
+$bg_link_hover_menu: #d8361f; // цвет фона ссылок при наведении
+$bg_cur_menu: #f0f0f0; // цвет фона текущего пункта
+$bg_dropdown_menu: #f0f0f0; // фон выпадающего списка
+$color_dropdown_link_menu: #505050; // цвет ссылок выпадающего списка
+$color_dropdown_link_hover_menu: #d8361f; // цвет ссылок при наведении выпадающего списка
+$color_dropdown_cur_menu: #d8361f; // цвет текущего пункта выпадающего списка
+$color_cur_menu_mobile: #63cac9; // цвет текущего пункта мобильной версии
+
+
+// Блок недвижимости на главной
+$bg_icons_realt: #63cac9; // фон иконок недв-ти
+$color_border_icons_realt: #59b5b5; // цвет бордеров между иконками
+$color_link_icons_realt: #005655; // цвет текста
+$color_link_hover_icons_realt: #fff; // цвет текста при наведении
+$bg_dropdown_icons_realt: #d8361f; // фон выпадающего списка
+$color_dropdown_link_icons_realt: #fff; // цвет ссылок выпадающего списка
+
+
+// О компании на главной
+$bg_about: #f0f0f0; // фон
+$color_about: #505050; // цвет текста
+
+
+// Специальные на главной
+$bg_special: #fff; // фон
+$bg_special_hover: #d8361f; // цвет фона блока при наведении
+$color_special_hover: #fff; // цвет текста блока при наведении
+
+
+// Срочная на главной
+$bg_urgent: #63cac9; // фон
+$color_urgent: #181f39; // цвет текста
+
+
+// Отзывы на главной
+$bg_reviews: #fff; // фон
+$color_reviews: #181f39; // цвет текста
+$color_reviews_hover: #d8361f; // цвет текста при наведении
+$color_reviews_data: #a1a1a1; // цвет текста даты и подписи
+
+
+// Сотрудники на главной
+$bg_collective: #f0f0f0; // фон
+$color_collective: #505050; // цвет текста
+
+
+// Вакансии на главной
+$bg_vacancy: #63cac9; // фон
+$color_vacancy: #181f39; // цвет текста
+$bg_vacancy_block: #fff; // фон отдельной вакансии
+
+
+// Новости на главной
+$bg_news: #fff; // фон
+$color_news: #181f39; // цвет текста
+$color_news_data: #a1a1a1; // цвет текста даты
+
+
+// Контакты на карте
+$bg_map: #d8361f; // фон
+$color_map: #fff; // цвет текста
+
+
+// Кнопка наверх
+$bg_up: #d8361f; // фон
+$color_up: #fff; // цвет текста
+
+
+// Недвижимость
+$bg_filter_realt: #f0f0f0; // фон фильтра
+$color_filter_realt: #4a4a4a; // цвет текста фильтра
+$color_border_fields: #b1bfd4; // цвет границ полей формы
+$bg_submit: #d8361f; // фон кнопки Найти
+$bg_submit_hover: #63cac9; // фон кнопки Найти при наведении
+$color_submit: #fff; // цвет кнопки Найти
+$color_submit_hover: #fff; // цвет кнопки Найти при наведении
+$bg_table_head: #63cac9; // фон заголовков таблицы
+$color_table_head: #000; // цвет текста заголовков таблицы
+$color_link_table_head: #000; // цвет ссылок заголовков таблицы
+$color_link_hover_table_head: #000; // цвет ссылок заголовков таблицы при наведении
+$color_border_table_head: #59b5b5; // цвет границ заголовков таблицы
+$color_border_table: #cfcfcf; // цвет границ ячеек таблицы
+$bg_table_tr: #fff; // фон строк таблицы
+$bg_table_tr_hover: #d9e2f0; // фон строк таблицы при наведении
+$color_border_tr_hover: #eee; // цвет границ ячеек таблицы при наведении
+$bg_object_head: #63cac9; // фон заголовков на странице объекта
+$color_object_head: #fff; // цвет заголовков на странице объекта
+$bg_object_info: #f0f0f0; // фон данных на странице объекта
+
+// Окно заявки
+$bg_btn: #63cac9; // фон кнопки
+$bg_btn_hover: #d8361f; // фон кнопки при наведении
+$color_btn: #fff; // цвет текста кнопки
+
+
+// Используемые цвета
+$white: #fff;
+$grey: #f0f0f0;
+$red: #d8361f;
+$turquoise: #63cac9;
+
+
+
+$blue: #065a9f;
+$green: #026d67;
+$light_orange: #ffe2ab;
+$orange: #ffc557;
+$background_lime: #87bd3b;
+$background_orange: #ffa42d;
+$lime: #579400;
+$orange_menu: #e57100;

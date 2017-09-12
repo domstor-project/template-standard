@@ -1,0 +1,5 @@
+app_static_about:
+    path: /about
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    AppBundle:Static:about.html.twig

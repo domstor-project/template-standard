@@ -1,0 +1,191 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+footer {
+    position: relative;
+    width: 100%;
+    background: $bg_contact_social;
+    
+    .footer_txt {
+        position: relative;
+        width: 1110px;
+        margin: 0 auto;
+        display: table;
+            
+        @media only screen and (max-width: 1199px) {
+            width: 930px;
+        }
+        @media only screen and (max-width: 991px) {
+            width: 730px;
+            display: block;
+            padding-bottom: 1.5em;
+        }
+        @media only screen and (max-width: 767px) {
+            width: 90%;
+        }
+        @media only screen and (max-width: 479px) {
+            padding-bottom: .5em;
+        }
+        
+        .copyright {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 25%;
+            color: $color_contact;
+            padding: 1em 0;
+            
+            @media only screen and (max-width: 991px) {
+                display: inline-block;
+                width: 45%;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+            
+            p {
+                padding: 0;
+                
+                &:first-child {
+                    padding-bottom: .2em;
+                }
+            }
+        }
+        .social {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 30%;
+            text-align: center;
+
+            @media only screen and (max-width: 991px) {
+                display: inline-block;
+                width: 52%;
+                text-align: right;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            a {
+                position: relative;
+                display: inline-block;
+                width: 15px;
+                height: 18px;
+                margin-left: 15px;
+
+                &.vk {
+                    background: url(/bundles/app/images/template/social.png) no-repeat 0 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat 0 -18px;
+                    }
+                }
+                &.fb {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -32px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -32px -18px;
+                    }
+                }
+                &.inst {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -63px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -63px -18px;
+                    }
+                }
+                &.twit {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -96px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -96px -18px;
+                    }
+                }
+                &.google {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -130px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -130px -18px;
+                    }
+                }
+                &.odnk {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -162px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -162px -18px;
+                    }
+                }
+                &.youtube {
+                    background: url(/bundles/app/images/template/social.png) no-repeat -192px 0;
+
+                    &:hover {
+                        background: url(/bundles/app/images/template/social.png) no-repeat -192px -18px;
+                    }
+                }
+            }
+        }
+        .creator {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 45%;
+            text-align: right;
+            
+            @media only screen and (max-width: 991px) {
+                width: 100%;
+                display: block;
+            }
+            @media only screen and (max-width: 767px) {
+                text-align: center;
+                padding-top: 1em;
+            }
+            
+            a {
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 0 0 2em;
+                width: 118px;
+                height: 16px;
+                
+                @media only screen and (max-width: 479px) {
+                    margin: 0 0 1em 1em;
+                }
+                
+                &.sibestate {
+                    background: url(/bundles/app/images/template/sibestate.png) no-repeat 0 0;
+                    
+                    &:hover {
+                        background: url(/bundles/app/images/template/sibestate.png) no-repeat 0 -16px;
+                    }
+                }
+                &.brekom {
+                    width: 74px;
+                    height: 19px;
+                    margin-top: 4px;
+                    background: url(/bundles/app/images/template/brekom.png) no-repeat 0 0;
+                    
+                    &:hover {
+                        background: url(/bundles/app/images/template/brekom.png) no-repeat 0 -19px;
+                    }
+                }
+                &.kww {
+                    width: 84px;
+                    height: 23px;
+                    margin-top: -2px;
+                    background: url(/bundles/app/images/template/kww.png) no-repeat 0 0;
+                    
+                    &:hover {
+                        background: url(/bundles/app/images/template/kww.png) no-repeat 0 -23px;
+                    }
+                }
+            }
+        }
+    }
+}
+

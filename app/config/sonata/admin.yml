@@ -1,0 +1,13 @@
+sonata_admin:   
+    security:
+        handler: sonata.admin.security.handler.role
+    title:      Кано
+    title_logo: /../assets/img/logo_admin.png
+    templates:
+        # default global templates
+        layout:    SonataAdminBundle::layout.html.twig
+
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }

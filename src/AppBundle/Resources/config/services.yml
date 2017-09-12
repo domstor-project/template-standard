@@ -1,0 +1,56 @@
+services:
+    app.repository.employee:
+        class: AppBundle\Entity\EmployeeRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Employee
+            
+    app.repository.partner:
+        class: AppBundle\Entity\PartnerRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Partner
+            
+    app.repository.post:
+        class: AppBundle\Entity\PostRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Post
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
+             
+    app.repository.review:
+        class: AppBundle\Entity\ReviewRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Review
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
+            
+    app.repository.slider:
+        class: AppBundle\Entity\SliderRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Slider
+            
+    app.repository.special_offer:
+        class: AppBundle\Entity\SpecialOfferRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\SpecialOffer
+            
+    app.repository.urgent_sale:
+        class: AppBundle\Entity\UrgentSaleRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\UrgentSale
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
+            
+    app.repository.vacancy:
+        class: AppBundle\Entity\VacancyRepository
+        factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
+        arguments:
+            - AppBundle\Entity\Vacancy
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }

@@ -1,0 +1,232 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+.realt_icons {
+    position: relative;
+    width: 100%;
+    background: $bg_icons_realt;
+
+    .realt_icons_content {
+        width: 1140px;
+        min-height: 160px;
+        height: auto;
+        margin: 0 auto;
+
+        @media only screen and (max-width: 1199px) {
+            width: 930px;
+        }
+        @media only screen and (max-width: 991px) {
+            width: 730px;
+        }
+        @media only screen and (max-width: 767px) {
+            width: 450px;
+        }
+        @media only screen and (max-width: 479px) {
+            width: 400px;
+        }
+        @media only screen and (max-width: 399px) {
+            width: 96%;
+        }
+
+        ul {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+
+            li {
+                position: relative;
+                list-style-type: none;
+                width: 190px;
+                height: 115px;
+                text-transform: uppercase;
+                font-weight: bold;
+                font-family: Roboto !important;
+                display: inline-block;
+                vertical-align: top;
+                border-right: 1px solid $color_border_icons_realt;
+                font-size: 1.1em;
+                letter-spacing: .05em;
+                
+                @media only screen and (max-width: 991px) {
+                    font-size: 1.05em;
+                }
+                @media only screen and (max-width: 399px) {
+                    width: 150px;
+                    font-size: .8em;
+                }
+                @media only screen and (max-width: 319px) {
+                    display: block;
+                    margin: 0 auto;
+                }
+                
+                &:last-child {
+                    border-right: 0;
+                }
+
+                a {
+                    color: $color_link_icons_realt;
+                    text-decoration: none;
+                    display: block;
+                    width: 190px;
+                    height: 131px;
+                    padding-top: 70px;
+                    margin-top: -8px;
+                    z-index: 10;
+                    
+                    @media only screen and (max-width: 399px) {
+                        width: 150px;
+                    }
+
+                    &:visited {
+                        color: $color_link_icons_realt;
+                    }
+                }
+                &:hover > a, &.open > a {
+                    color: $color_link_hover_icons_realt;
+                }
+
+                ul {
+                    width: 190px;
+                    padding-top: 10px;
+                    background: $bg_dropdown_icons_realt;
+                    position: absolute;
+                    min-width: 190px;
+                    margin: 0;
+                    border: 0;
+                    box-shadow: none;
+                    font-size: .9em;
+                    top: 122px;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                    z-index: 10000;
+                    
+                    @media only screen and (max-width: 767px) {
+                       top: 122px; 
+                    }
+                    @media only screen and (max-width: 399px) {
+                        width: 150px;
+                        min-width: 150px;
+                    }
+                    
+
+                    li {
+                        height: auto;
+                        text-transform: none;
+                        font-weight: normal;
+                        font-family: Roboto !important;
+                        display: block;
+                        border: 0 !important;
+                        /* font-size: .95em; */
+                        letter-spacing: .05em;
+                        
+                        @media only screen and (max-width: 479px) {
+                            margin-bottom: .7em;
+                        }
+                        @media only screen and (max-width: 399px) {
+                            font-size: 1.1em;
+                        }
+
+                        a {
+                            height: auto;
+                            padding-top: 0;
+                            padding-bottom: .5em;
+                            margin-top: 0;
+                            background: none !important;
+                            color: $color_dropdown_link_icons_realt;
+                            text-decoration: underline;
+                            padding-left: 0;
+                            padding-right: 0;
+
+                            &:visited {
+                                color: $color_dropdown_link_icons_realt;
+                            }
+                            &:hover {
+                                color: $color_dropdown_link_icons_realt;
+                                text-decoration: none;
+                                background: none !important;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                     ul {
+                        display: block;
+                        position: absolute;
+                    }
+                }
+                @each $icon in flat, newflat, house, land, garage, commerce {
+                    &.#{$icon} {
+                        a {
+                            background: url('/bundles/app/images/template/icon-#{$icon}.png') no-repeat 0 1px;
+                            
+                            @media only screen and (max-width: 399px) {
+                                background: url('/bundles/app/images/template/icon-#{$icon}.png') no-repeat 50% 1px;
+                            }
+                        }
+                        &:hover > a, &.open > a {
+                            background: url('/bundles/app/images/template/icon-#{$icon}.png') no-repeat 0 -130px;
+                            
+                            @media only screen and (max-width: 399px) {
+                                background: url('/bundles/app/images/template/icon-#{$icon}.png') no-repeat 50% -130px;
+                            }
+                        }
+                    }
+                }
+                
+                @media only screen and (max-width: 1199px) {
+                    &.flat, &.newflat, &.house, &.land {
+                        margin-bottom: 40px;
+                    }
+                    &.land {
+                        border-right: 0;
+                    }
+                }
+                @media only screen and (max-width: 991px) {
+                    &.flat, &.newflat, &.house {
+                        margin-bottom: 40px;
+                    }
+                    &.land {
+                        border-right: 1px solid $color_border_icons_realt;
+                        margin-bottom: 0;
+                    }
+                    /* &.house {
+                        border-right: 0;
+                    } */
+                    &.garage {
+                        border-right: 0;
+                    }
+                }
+                @media only screen and (max-width: 767px) {
+                    &.flat, &.newflat {
+                        margin-bottom: 20px;
+                    }
+                    &.house, &.land, &.garage {
+                        margin-bottom: 40px;
+                    }
+                    &.garage {
+                        border-right: 1px solid $color_border_icons_realt;
+                    }
+                    &.newflat, &.house, &.land {
+                        border-right: 0;
+                    }
+                }
+                @media only screen and (max-width: 319px) {
+                    /* &.flat, &.newflat {
+                        border-right: 0; 
+                    }
+                    &.house, &.land, &.garage {
+                        border-right: 0;
+                        margin-bottom: 40px; 
+                    } */
+                    &.flat, &.newflat, &.house, &.land, &.garage, &.commerce {
+                        border-right: 1px solid $color_border_icons_realt;
+                        border-left: 1px solid $color_border_icons_realt;
+                        margin-bottom: 40px; 
+                    }
+                }
+            }
+        }
+    }
+}
