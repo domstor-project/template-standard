@@ -1,72 +1,71 @@
-Symfony Standard Edition
+Domstor Template Standard
 ========================
-
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Требования
 --------------
+PHP>=7.0
 
-The Symfony Standard Edition is configured with the following defaults:
+Установка
+--------------
+1. `composer create-project domstor-project/template-standard`
+2. В ходе установки проекта необходимо будет ввести пароль администратора. Пароль вводится не в открытом виде, а в шифрованном по алгоритму bcrypt. Для того, что бы зашифровать пароль,  первоначально нужно оставить поле пустым, затем выполнить команду 
+`php bin/console security:encode-password your_password` 
+и полученную строку вставить в parameters.yml напротив admin_password
+3. Параметр `mailer_request_recipients` вводится в формате ['email@email1.ru', 'email@email2.ru']
+4. Выставить права на var/logs и var/cache. Подробнее [Symfony Documentation](https://symfony.com/doc/current/setup/file_permissions.html).
+5. Выполнить `php bin/console d:d:c` для создания базы данных
+6. Выполнить `php bin/console d:s:u --force` для обновления схемы базы
+7. Выполнить `php bin/console cache:clear` для очистки кэша
+8. Выполнить `php bin/console fos:js-routing:dump` для выгрузки роутов Symfony в JS
+9. Выполнить `php bin/console assetic:dump` для выгрузки ассетов
+10. Создать папку web/uploads и установить права `sudo chown -R www-data:www-data /path/to/project-folder/web/uploads` `sudo chmod -R 755 /path/to/project-folder/web/uploads`
 
-  * An AppBundle you can use to start coding;
+Настройка
+--------------
+Для настройки блока меню недвижимости необходимо настроить DomstorTemplateBundle. Пример настроек:
+```yaml
+domstor_template:
+    domstorlib:
+        realtyicons:
+            org_id: 13 #Идентификатор вашей организации в системе Домстор
+            location_id: 2004 #Идентификатор города в системе Домстор. 2004 - Кемерово, 2006 - Новокузнецк, 2236 - Новосибирск
+            template: 'DomstorTemplateBundle:Block:realtyicons.html.twig' #Шаблон блока меню недвижимости
+            cache_dir: '%kernel.cache_dir%' #Директория, где хранится кэш объектов
+            cache_type: 'file' #Тип кэширования. Поддерживаются: file, apc, array, xcache, memcache
+            cache_time: 86400 #Время жизни кэша
+    mailer:
+        request: 
+            service: 'default' #mailer-сервис, через который будут отправляться сообщения о поступлении новых заявок
+            to: '%mailer_request_recipients%' #Получатели рассылки о новых заявках
+            from: '%mailer_request_from%' #От кого будут приходить заявки
+            subject: '%mailer_request_subject%' #Тема письма для заявки
+            email_template: 'DomstorTemplateBundle:Email:email_request.html.twig' #Шаблон письма
+```
 
-  * Twig as the only configured template engine;
+Блоки на главной странице
+--------------
+Все доступные в системе блоки представлены в `AppBundle:Home:index.html.twig`
+```twig
+{% block content %}
+    {{ sonata_block_render({'type':'domstor.template.block.home.slider.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.special_offer.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.urgent_sale.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.review.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.employee.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.partner.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.vacancy.service'}) }}
+    {{ sonata_block_render({'type':'domstor.template.block.home.post.service'}) }}
+{% endblock %}
+```
+Что бы убрать блок с главной страницы, достаточно удалить строку с его вызовом. В этом случае запросов к БД идти не будет. В системе администрирования, однако, останется возможность добавлять записи в этот блок.
 
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.3/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.3/doctrine.html
-[8]:  https://symfony.com/doc/3.3/templating.html
-[9]:  https://symfony.com/doc/3.3/security.html
-[10]: https://symfony.com/doc/3.3/email.html
-[11]: https://symfony.com/doc/3.3/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
+Статические страницы без контроллера
+--------------
+Существует возможность добавлять статические страницы, без создания контроллера. Достаточно сделать twig-шаблон и прописать необходимые настройки в конфигурацию. В качестве примера используется страница "О компании":
+Добавим запись в `AppBundle/Resources/config/static_routing.yml`
+```yaml
+app_static_about: #Название роута для Symfony Routing
+    path: /about #Путь к странице в адресной строке
+    defaults:
+        _controller: FrameworkBundle:Template:template #Обязательная строка для страницы без контроллера
+        template:    AppBundle:Static:about.html.twig #Шаблон страницы
+```

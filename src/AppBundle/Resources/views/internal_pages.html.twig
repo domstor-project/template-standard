@@ -32,6 +32,12 @@
                     {% endimage %}</a>
             </div>
         {% endblock %}
+        
+        {% block realtyicons %}
+            <div class="inners_realt_icons">
+                {{ sonata_block_render({'type':'domstor.template.block.realtyicons.service'}) }}
+            </div>
+        {% endblock %}
     {% endembed %}
 {% endblock %}
 

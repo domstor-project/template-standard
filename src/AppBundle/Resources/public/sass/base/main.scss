@@ -371,3 +371,21 @@ p {
         }
     }
 }
+.btn.more {
+    font-size: 1.1em;
+    background: $bg_more;
+    color: $color_more;
+    text-align: left;
+    border: 0;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 1em;
+    padding: .3em 1.5em .5em 1.5em;
+    
+    &:visited {
+        color: $color_more;
+    }
+    &:hover {
+        background: $bg_more_hover;
+    }
+}

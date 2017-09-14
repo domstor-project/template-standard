@@ -325,6 +325,9 @@
             font-size: 2.1em;
             padding-bottom: .5em;
         }
+        .btn.more {
+            
+        } 
         
         &.var_one {
             
@@ -553,7 +556,7 @@
                     position: relative;
                     width: 256px !important;
                     margin: 0 auto;
-                    height: 300px;
+                    /* height: 370px; */
                     border: 1px solid #dedede;
 
                     @media only screen and (max-width: 479px) {
@@ -586,6 +589,30 @@
 
                         p {
                             padding: 0;
+                            
+                            &:first-child {
+                                height: 115px;
+                                /* padding-bottom: 30px; */
+                                margin-bottom: 1em;
+                                overflow: hidden;
+                                /* background: url(/bundles/app/images/template/gradient-opacity.png) repeat-x 0 100%; */
+                                
+                                @media only screen and (min-width: 1600px) {
+                                    height: 145px;
+                                }
+                                @media only screen and (max-width: 1199px) {
+                                    height: 145px;
+                                }
+                                @media only screen and (max-width: 991px) {
+                                    height: 155px;
+                                }
+                                @media only screen and (max-width: 767px) {
+                                    height: 170px;
+                                }
+                                @media only screen and (max-width: 479px) {
+                                    height: 200px;
+                                }
+                            }
                         }
                     }
                     a {
@@ -730,8 +757,31 @@
                         /* text-align: justify; */
                         color: $color_urgent;
 
-                        &:first-child {
+                        /* &:first-child {
                             padding-bottom: .5em;
+                        } */
+                        &:first-child {
+                            height: 155px;
+                            /* padding-bottom: 30px; */
+                            margin-bottom: 1em;
+                            overflow: hidden;
+                            /* background: url(/bundles/app/images/template/gradient-opacity.png) repeat-x 0 100%; */
+
+                            @media only screen and (min-width: 1600px) {
+                                height: 165px;
+                            }
+                            @media only screen and (max-width: 1199px) {
+                                height: 165px;
+                            }
+                            @media only screen and (max-width: 991px) {
+                                height: 205px;
+                            }
+                            @media only screen and (max-width: 767px) {
+                                height: 285px;
+                            }
+                            @media only screen and (max-width: 359px) {
+                                height: 340px;
+                            }
                         }
                     }
                     a.urgent_link {
@@ -1005,19 +1055,30 @@
                     width: 254px !important;
                     margin: 0 auto;
                     height: 330px;
+                    overflow: hidden;
                     border: 0px solid #dedede;
                     background: $white;
                     -webkit-box-shadow: 0px 10px 32px -10px rgba(0,0,0,0.75);
                     -moz-box-shadow: 0px 10px 32px -10px rgba(0,0,0,0.75);
                     box-shadow: 0px 10px 32px -10px rgba(0,0,0,0.75);
                 
+                    @media only screen and (min-width: 1600px) {
+                        height: 360px;
+                    }
+                    @media only screen and (max-width: 1199px) {
+                        height: 360px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        height: 380px;
+                    }
                     @media only screen and (max-width: 479px) {
                         width: 240px !important; 
-                        height: auto;
-                        min-height: 350px;
+                        /* height: auto;
+                        min-height: 350px; */
                         -webkit-box-shadow: none;
                         -moz-box-shadow: none;
                         box-shadow: none;
+                        height: 390px;
                     }
                     @media only screen and (max-width: 359px) {
                         width: 200px !important; 
@@ -1251,6 +1312,15 @@
                 h4, p {
                     color: $color_special_hover;
                 }
+            }
+        }
+        .btn.more {
+            background: $bg_more_vacancy;
+            color: $color_more_vacancy;
+            
+            &:hover {
+                background: $bg_more_hover_vacancy;
+                color: $color_more_hover_vacancy;
             }
         }
     }

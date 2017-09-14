@@ -33,6 +33,9 @@
                     <img src="{{ asset_url }}" alt="" />
                 {% endimage %}</div>
         {% endblock %}
+        {% block realtyicons %}
+            {{ sonata_block_render({'type':'domstor.template.block.realtyicons.service'}) }}
+        {% endblock %}
     {% endembed %}
 {% endblock %}
 
