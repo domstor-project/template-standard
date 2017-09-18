@@ -51,4 +51,3 @@ vendor/*
 .hg/*
 /domstor-project/*
 /stepanets/**
-composer.lock
