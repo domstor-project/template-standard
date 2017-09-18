@@ -226,7 +226,6 @@
         }
     }
     
-    
     /* НОВОСТИ */
     @import "../components/news";
     .news_home {
@@ -234,11 +233,40 @@
         
         .news_content {
             text-align: left;
+            padding-top: 0;
             
             .news_block {
+                display: inline-block;
+                vertical-align: top;
+                width: 254px;
+                padding: 10px;
+                margin: 15px 10px;
+                text-align: left;
                 margin-left: 0;
                 padding-left: 0;
                 margin-right: 20px;
+                
+                p {
+                    padding: 0;
+
+                    a {
+                        color: $color_news;
+                        text-decoration: underline;
+
+                        &:hover {
+                            color: $color_news;
+                            text-decoration: none;
+                        }
+                    }
+                    &.data {
+                        /* padding: 0; */
+                        font-size: .9em;
+                        color: $color_news_data;
+                    }
+                    &:first-child {
+                        padding-bottom: 1em;
+                    }
+                }
             }
             p.archive_news {
                 display: none;
@@ -270,6 +298,30 @@
                     font-size: .9em;
                     color: $color_reviews_data;
                 }
+                /* &:first-child {
+                    height: 140px;
+                    margin-bottom: 1em;
+                    overflow: hidden;
+                
+                    @media only screen and (min-width: 1600px) {
+                        height: 170px;
+                    }
+                    @media only screen and (max-width: 1199px) {
+                        height: 170px;
+                    }
+                    @media only screen and (max-width: 991px) {
+                        height: 175px;
+                    }
+                    @media only screen and (max-width: 767px) {
+                        height: 255px;
+                    }
+                    @media only screen and (max-width: 479px) {
+                        height: 285px;
+                    }
+                    @media only screen and (max-width: 359px) {
+                        height: 315px;
+                    }
+                } */
 
                 a {
                     color: $color_reviews;
@@ -312,7 +364,7 @@
                 color: $color_vacancy;
                 line-height: 1.4em;
             }
-            a {
+            a.vacancy_link {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -364,29 +416,153 @@
             }
         }
     }
+    
+    
+    /* КОНТАКТЫ */
+    &.contact_page {
+        width: 100%;
+        padding-bottom: 0;
+        
+        .breadcrumbs, h1 {
+            width: 1110px;
+            margin: 0 auto;
+            padding-bottom: 0;
+            
+            @media only screen and (max-width: 1199px) {
+                width: 940px;
+            }
+            @media only screen and (max-width: 991px) {
+                width: 740px;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 80%;
+            }
+        }
+    }
+    .map_home {
+        position: relative;
+        width: 100%;
+        margin-top: 2em;
+        /* height: 500px; */
+
+        /* @media only screen and (max-width: 767px) {
+            width: 85%;
+            margin: 0 auto;
+        } */
+
+        .map_description {
+            /* position: relative; */
+            /* width: 1110px;
+            margin: 0 auto;
+            z-index: 10; */
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            background: url(/bundles/app/images/template/bg-map.jpg) no-repeat 0 0;
+
+            /* @media only screen and (max-width: 1199px) {
+                width: 940px;
+            }
+            @media only screen and (max-width: 991px) {
+                width: 740px;
+            }
+            @media only screen and (max-width: 767px) {
+                width: 100%;
+            } */
+            @media only screen and (max-width: 767px) {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .map_txt {
+                /* position: absolute;
+                top: 40px;
+                left: 0;
+                width: 350px;
+                height: auto;
+                max-height: 400px;
+                overflow: hidden;
+                padding: 30px;
+                background: $bg_map url(/bundles/app/images/template/bg-map-address.png) no-repeat 100% 100%;
+                color: $color_map; */
+
+                /* @media only screen and (max-width: 479px) {
+                    width: 100%;
+                } */
+                position: relative;
+                width: 100%;
+                margin: 0 auto;
+                background: $bg_map;
+                text-align: center;
+                padding: 1.5em 1em 0 1em;
+                opacity: .85;
+
+                /* @media only screen and (max-width: 1199px) {
+                    width: 940px;
+                }
+                @media only screen and (max-width: 991px) {
+                    width: 740px;
+                } */
+                /* @media only screen and (max-width: 767px) {
+                    width: 80%;
+                    margin: 0 auto;
+                } */
+
+                p {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 250px;
+                    margin: 0 1em 1.5em 1em;
+                    text-align: left;
+                    color: $color_map;
+                    font-size: 1.1em;
+                    padding: 0 0 0 25px;
+                    background: url(/bundles/app/images/template/marker-adress.png) no-repeat 0 0;
+
+
+                    &.email_map {
+                        padding-left: 35px;
+                        background: url(/bundles/app/images/template/marker-mail.png) no-repeat 0 60%;
+                    }
+
+                    @media only screen and (max-width: 991px) {
+                        width: 300px;
+                    }
+                    @media only screen and (max-width: 479px) {
+                        width: 95%;
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+                a {
+                    color: $color_map;
+
+                    &:visited, &:hover {
+                        color: $color_map;
+                    }
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .map {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            top: 0;
+            left: 0;
+
+            @media only screen and (max-width: 767px) {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+    }
  }   
     
-
-/* КАРТА */
-.map_home {
-    position: relative;
-    width: 100%;
-    height: 390px;
-
-    .ymaps-2-1-29-controls__toolbar {
-        display: none;
-    }
-    .ymaps-2-1-29-islets_gotoymaps {
-        display: none;
-    }
-    /* .ymaps_https___api_maps_yandex_ru_2_1_29_release__islands_icon___1E98FF {
-        background-image: url(/bundles/app/images/template/map-marker.png) !important;
-        width: 32px !important;
-        height: 49px !important;
-        top: -50px !important;
-        background-size: 32px 49px;
-    } */
-}
 .fancybox-opened .fancybox-title {
     display: none !important;
 }

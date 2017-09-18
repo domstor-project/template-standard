@@ -120,6 +120,54 @@ $(function() {
         e.preventDefault();
     });
     
+    
+    var vacancy = $("#vacancy").owlCarousel({
+        items: 3,
+        itemsDesktop : [991, 2],
+        itemsDesktopSmall : false,
+        itemsTablet : [767, 1],
+        itemsTabletSmall : false,
+        itemsMobile : false,
+        slideSpeed : 400,
+        navigation: false,
+        rewindNav : false,
+        pagination: false
+    });
+    
+    $("#vacancy_next").click(function(e){
+        vacancy.trigger('owl.next');
+        e.preventDefault();
+    });
+    
+    $("#vacancy_prev").click(function(e){
+        vacancy.trigger('owl.prev');
+        e.preventDefault();
+    });
+    
+    
+    var news = $("#news").owlCarousel({
+        items: 3,
+        itemsDesktop : [991, 2],
+        itemsDesktopSmall : false,
+        itemsTablet : [767, 1],
+        itemsTabletSmall : false,
+        itemsMobile : false,
+        slideSpeed : 400,
+        navigation: false,
+        rewindNav : false,
+        pagination: false
+    });
+    
+    $("#news_next").click(function(e){
+        news.trigger('owl.next');
+        e.preventDefault();
+    });
+    
+    $("#news_prev").click(function(e){
+        news.trigger('owl.prev');
+        e.preventDefault();
+    });
+    
 });
 
 var slider = $('.bxslider').bxSlider({

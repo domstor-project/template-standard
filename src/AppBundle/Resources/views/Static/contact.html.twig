@@ -1,0 +1,16 @@
+{% extends "AppBundle::internal_pages.html.twig" %}
+
+{% block title %}{{ parent() }}. Контакты{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ url('app_home_index') }}">Главная</a> / Контакты
+{% endblock %}
+
+{% block class_page %}contact_page{% endblock %}
+
+{% block content %}
+    <h1>Контакты</h1>
+    
+    {% include 'AppBundle:Includes:map.html.twig' %}
+    
+{% endblock %}

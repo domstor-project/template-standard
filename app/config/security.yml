@@ -3,7 +3,6 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
-        Symfony\Component\Security\Core\User\User: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -11,17 +10,8 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory:
-                users:
-                    admin: 
-                        password: '%admin_password%'
-                        roles: 'ROLE_SUPER_ADMIN'
         fos_userbundle:
             id: fos_user.user_provider.username_email
-        chain_provider:
-            chain:
-                providers: [in_memory, fos_userbundle]
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -31,9 +21,8 @@ security:
 
         main:
             pattern: ^/
-            provider: fos_userbundle
             http_basic:
-                provider: in_memory
+                provider: fos_userbundle
             logout:       true
             anonymous:    true
             

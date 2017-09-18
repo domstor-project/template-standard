@@ -2,11 +2,14 @@
 
 {% block stylesheets %}
     {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/skins/sonata/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/markdown/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/html/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/textile/style.css') }}" type="text/css" media="all" />
+    {% stylesheets filter='cssrewrite'
+        'bundles/sonataformatter/markitup/skins/sonata/style.css'
+        'bundles/sonataformatter/markitup/sets/markdown/style.css'
+        'bundles/sonataformatter/markitup/sets/html/style.css'
+        'bundles/sonataformatter/markitup/sets/textile/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
@@ -17,4 +20,20 @@
     <script src="{{ asset('bundles/sonataformatter/markitup/sets/markdown/set.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/sonataformatter/markitup/sets/html/set.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/sonataformatter/markitup/sets/textile/set.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block sonata_sidebar_search %}
+{% endblock sonata_sidebar_search %}
+
+{% block logo %}
+    {% spaceless %}
+        <a class="logo" href="{{ path('homepage') }}">
+            {% if 'single_image' == sonata_admin.adminPool.getOption('title_mode') or 'both' == sonata_admin.adminPool.getOption('title_mode') %}
+                <img src="{{ asset(sonata_admin.adminPool.titlelogo) }}" alt="{{ sonata_admin.adminPool.title }}">
+            {% endif %}
+            {% if 'single_text' == sonata_admin.adminPool.getOption('title_mode') or 'both' == sonata_admin.adminPool.getOption('title_mode') %}
+                <span>{{ sonata_admin.adminPool.title }}</span>
+            {% endif %}
+        </a>
+    {% endspaceless %}
 {% endblock %}

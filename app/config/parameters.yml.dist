@@ -17,7 +17,6 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
-    admin_password: password
     mailer_request_recipients: ['test@test.su']
     mailer_request_subject: 'Тема письма'
     mailer_request_from: 'test@tes.su'

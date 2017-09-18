@@ -14,7 +14,7 @@
         
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts
+    {% javascripts filter="?jsqueeze" output="js/minified/internal_pages.js"
             'https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js'
             '@AppBundle/Resources/public/js/fancy.js'
         %}
@@ -24,10 +24,15 @@
 
 {% block header %}
     {% embed 'AppBundle:Includes:header.html.twig' %}
+        {% block contact_social %}
+            <div class="inners_contact_social">
+                {% include 'AppBundle:Includes:contactSocial.html.twig' %}
+            </div>
+        {% endblock %}
         {% block logo %}
             <div class="logo">
                 <a href="{{ url('app_home_index') }}" title="На главную">
-                    {% image '@AppBundle/Resources/public/images/template/logo.gif' %}
+                    {% image '@AppBundle/Resources/public/images/template/logo.png' %}
                         <img src="{{ asset_url }}" alt="" />
                     {% endimage %}</a>
             </div>
@@ -43,7 +48,7 @@
 
 {% block middle %}
     <div class="cd-main-content">
-        <div class="middle_inners">
+        <div class="middle_inners {% block class_page %}{% endblock %}">
             <p class="breadcrumbs">
                 {% block breadcrumbs %}{% endblock %}
             </p>

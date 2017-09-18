@@ -2,7 +2,7 @@ sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
     title:      Кано
-    title_logo: /../assets/img/logo_admin.png
+    title_logo: /../bundles/app/images/template/logo.png
     templates:
         # default global templates
         layout:    SonataAdminBundle::layout.html.twig
@@ -11,3 +11,16 @@ sonata_admin:
         blocks:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
+        groups:
+            domstor_template:
+                keep_open:            true
+                label_catalogue:      messages
+                items:
+                    - domstor.template.admin.slider #Слайдер
+                    - domstor.template.admin.special_offer #Специальные предложения
+                    - domstor.template.admin.urgent_sale #Срочная продажа
+                    - domstor.template.admin.review #Отзывы
+                    - domstor.template.admin.employee #Сотрудники
+                    - domstor.template.admin.partner #Партнеры
+                    - domstor.template.admin.vacancy #Вакансии
+                    - domstor.template.admin.post #Новости

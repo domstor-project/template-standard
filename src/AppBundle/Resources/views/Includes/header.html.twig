@@ -1,18 +1,5 @@
 <div class="header">
-    <div class="contact_social">
-        <div class="contact_social_content">
-            <div class="contact">
-                <div class="adress">
-                    <span class="glyphicon glyphicon-map-marker"></span><span>Кемерово, пр. Советский, 5, офис 103</span>
-                </div>
-                <div class="phone">
-                    <span class="glyphicon glyphicon-earphone"></span><span>+7 (3843) 74-58-44, +7 (960) 944-58-44</span>
-                </div>
-            </div>
-            
-            {% include 'AppBundle:Includes:social.html.twig' %}
-        </div>
-    </div>
+    {% block contact_social %}{% endblock %}
     
     <div class="logo_menu">
         <div class="logo_menu_content">

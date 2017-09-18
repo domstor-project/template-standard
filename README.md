@@ -7,17 +7,15 @@ PHP>=7.0
 Установка
 --------------
 1. `composer create-project domstor-project/template-standard`
-2. В ходе установки проекта необходимо будет ввести пароль администратора. Пароль вводится не в открытом виде, а в шифрованном по алгоритму bcrypt. Для того, что бы зашифровать пароль,  первоначально нужно оставить поле пустым, затем выполнить команду 
-`php bin/console security:encode-password your_password` 
-и полученную строку вставить в parameters.yml напротив admin_password
-3. Параметр `mailer_request_recipients` вводится в формате ['email@email1.ru', 'email@email2.ru']
-4. Выставить права на var/logs и var/cache. Подробнее [Symfony Documentation](https://symfony.com/doc/current/setup/file_permissions.html).
-5. Выполнить `php bin/console d:d:c` для создания базы данных
-6. Выполнить `php bin/console d:s:u --force` для обновления схемы базы
-7. Выполнить `php bin/console cache:clear` для очистки кэша
-8. Выполнить `php bin/console fos:js-routing:dump` для выгрузки роутов Symfony в JS
-9. Выполнить `php bin/console assetic:dump` для выгрузки ассетов
-10. Создать папку web/uploads и установить права `sudo chown -R www-data:www-data /path/to/project-folder/web/uploads` `sudo chmod -R 755 /path/to/project-folder/web/uploads`
+2. Параметр `mailer_request_recipients` вводится в формате ['email@email1.ru', 'email@email2.ru']
+3. Выставить права на var/logs и var/cache. Подробнее [Symfony Documentation](https://symfony.com/doc/current/setup/file_permissions.html).
+4. Выполнить `php bin/console d:d:c` для создания базы данных
+5. Выполнить `php bin/console d:s:u --force` для обновления схемы базы
+6. Выполнить `php bin/console cache:clear` для очистки кэша
+7. Выполнить `php bin/console fos:js-routing:dump` для выгрузки роутов Symfony в JS
+8. Выполнить `php bin/console assetic:dump` для выгрузки ассетов
+9. Создать папку web/uploads и установить права `sudo chown -R www-data:www-data /path/to/project-folder/web/uploads` `sudo chmod -R 755 /path/to/project-folder/web/uploads`
+10. Создать пользователя для доступа к системе администрирования `php bin/console fos:user:create` и `php bin/console fos:user:promote admin_user_name ROLE_SUPER_ADMIN`
 
 Настройка
 --------------
@@ -68,4 +66,36 @@ app_static_about: #Название роута для Symfony Routing
     defaults:
         _controller: FrameworkBundle:Template:template #Обязательная строка для страницы без контроллера
         template:    AppBundle:Static:about.html.twig #Шаблон страницы
+```
+
+Управление отображением разделов в системе администрирования
+--------------
+Существует возможность скрыть раздел из системы администрирования. Все доступные разделы находятся в файле `app/config/sonata/admin.yml`. Для того, что бы скрыть раздел, достаточно закомментировать строку.
+```yaml
+sonata_admin:   
+    security:
+        handler: sonata.admin.security.handler.role
+    title:      Кано
+    title_logo: /../bundles/app/images/template/logo.png
+    templates:
+        # default global templates
+        layout:    SonataAdminBundle::layout.html.twig
+
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list }
+        groups:
+        domstor_template:
+                keep_open:            true
+                label_catalogue:      messages
+                items:
+                    - domstor.template.admin.slider #Слайдер
+                    - domstor.template.admin.special_offer #Специальные предложения
+                    - domstor.template.admin.urgent_sale #Срочная продажа
+                    - domstor.template.admin.review #Отзывы
+                    - domstor.template.admin.employee #Сотрудники
+                    - domstor.template.admin.partner #Партнеры
+                    - domstor.template.admin.vacancy #Вакансии
+                    - domstor.template.admin.post #Новости
 ```

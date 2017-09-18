@@ -31,6 +31,7 @@ class Builder implements ContainerAwareInterface
         $news = $root->addChild('Новости', array('route' => 'app_news_list'));
         $reviews = $root->addChild('Отзывы', array('route' => 'app_reviews_list'));
         $vacancies = $root->addChild('Вакансии', array('route' => 'app_vacancies_list'));
+        $contact = $root->addChild('Контакты', array('route' => 'app_static_contact'));
         $req = $root->addChild('Подать заявку', array('uri' => '#'));
         $req
             ->setAttribute('id', 'btnOpenRequestModal')

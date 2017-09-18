@@ -71,6 +71,13 @@
                         display: block;
                         padding-bottom: .6em;
                     }
+                    a {
+                        color: $color_contact !important;
+                        
+                        &:hover, &:visited {
+                            color: $color_contact !important;
+                        }
+                    }
                 }
                 .glyphicon {
                     font-size: .9em;
@@ -155,10 +162,19 @@
             }
         }
     }
+    @media only screen and (max-width: 767px) {
+        .inners_contact_social .contact_social {
+            display: none;
+        }
+    }
 
     .logo_menu {
         position: relative;
         width: 100%;
+        
+        @media only screen and (max-width: 767px) {
+            background: $bg_contact_social;
+        }
         
         .logo_menu_content {
             width: 1110px;
