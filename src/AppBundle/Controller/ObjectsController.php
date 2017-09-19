@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Domstor\TemplateBundle\Model\TitleProvider;
+use Domstor_Builder;
+use Domstor_Domstor;
 
 /**
  * @Route("/objects")
@@ -18,15 +20,17 @@ class ObjectsController extends Controller
      * @Template()
      */
     public function detailAction($object, $action, $id) {
-        $builder = new \Domstor_Builder();
+        /* @var $builder Domstor_Builder */
+        $builder = $this->get('domstor.template.domstorlib.domstor_builder');
+        $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
         $domstor = $builder->build(array(
-            'org_id' => 13,
-            'location_id' => 2004,
+            'org_id' => $baseParams['org_id'],
+            'location_id' => $baseParams['location_id'],
             'cache' => array(
-                'type' => 'file',
-                'time' => 86400,
-                'uniq_key' => '13',
-                'options' => array('directory' => $this->getParameter('kernel.cache_dir')),
+                'type' => $baseParams['cache_type'],
+                'time' => $baseParams['cache_time'],
+                'uniq_key' => (string)$baseParams['org_id'],
+                'options' => array('directory' => $baseParams['cache_dir']),
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
@@ -48,6 +52,10 @@ class ObjectsController extends Controller
         $domstor->getFilter()->bindFromRequest();
         
         $detail = $domstor->getDetail($object, $action, $id);
+        if ($detail===null)
+        {
+            throw $this->createNotFoundException();
+        }
         $titleProvider = new TitleProvider($domstor);
         return array(
             'detail' => $detail,
@@ -63,15 +71,17 @@ class ObjectsController extends Controller
      * @Template()
      */
     public function listAction($object, $action, Request $request) {
-        $builder = new \Domstor_Builder();
+        /* @var $builder Domstor_Builder */
+        $builder = $this->get('domstor.template.domstorlib.domstor_builder');
+        $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
         $domstor = $builder->build(array(
-            'org_id' => 13,
-            'location_id' => 2004,
+            'org_id' => $baseParams['org_id'],
+            'location_id' => $baseParams['location_id'],
             'cache' => array(
-                'type' => 'file',
-                'time' => 86400,
-                'uniq_key' => '13',
-                'options' => array('directory' => $this->getParameter('kernel.cache_dir')),
+                'type' => $baseParams['cache_type'],
+                'time' => $baseParams['cache_time'],
+                'uniq_key' => (string)$baseParams['org_id'],
+                'options' => array('directory' => $baseParams['cache_dir']),
             ),
             'filter' => array(
                 'template_dir' => $this->getParameter('kernel.root_dir').'/../src/AppBundle/Resources/views/Filters',

@@ -117,7 +117,7 @@ knp_paginator:
         
 domstor_template:
     domstorlib:
-        realtyicons:
+        builder:
             org_id: 13
             location_id: 2004
             template: 'DomstorTemplateBundle:Block:realtyicons.html.twig'
