@@ -10,6 +10,9 @@
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
     {% endstylesheets %}
+    {% stylesheets 'bundles/app/sass/admin.scss' filter="scssphp" output="css/admin.css" %}
+        <link  rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}

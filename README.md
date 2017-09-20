@@ -24,7 +24,7 @@ PHP>=7.0
 ```yaml
 domstor_template:
     domstorlib:
-        realtyicons:
+        builder:
             org_id: 13 #Идентификатор вашей организации в системе Домстор
             location_id: 2004 #Идентификатор города в системе Домстор. 2004 - Кемерово, 2006 - Новокузнецк, 2236 - Новосибирск
             template: 'DomstorTemplateBundle:Block:realtyicons.html.twig' #Шаблон блока меню недвижимости
