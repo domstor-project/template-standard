@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Domstor\TemplateBundle\Model\TitleProvider;
+use Domstor\TemplateBundle\Model\TitleProviderInterface;
 use Domstor_Builder;
 use Domstor_Domstor;
 
@@ -20,6 +20,8 @@ class ObjectsController extends Controller
      * @Template()
      */
     public function detailAction($object, $action, $id) {
+        /* @var $locator \Symfony\Component\Config\FileLocatorInterface */
+        $locator = $this->container->get('file_locator');
         /* @var $builder Domstor_Builder */
         $builder = $this->get('domstor.template.domstorlib.domstor_builder');
         $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
@@ -30,7 +32,7 @@ class ObjectsController extends Controller
                 'type' => $baseParams['cache_type'],
                 'time' => $baseParams['cache_time'],
                 'uniq_key' => (string)$baseParams['org_id'],
-                'options' => array('directory' => $baseParams['cache_dir']),
+                'options' => array('directory' => $locator->locate($baseParams['cache_dir'])),
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
@@ -56,13 +58,14 @@ class ObjectsController extends Controller
         {
             throw $this->createNotFoundException();
         }
-        $titleProvider = new TitleProvider($domstor);
+        /* @var $titleProvider TitleProviderInterface */
+        $titleProvider = $this->get('domstor.template.provider.title');
         return array(
             'detail' => $detail,
             'object' => $object,
             'action' => $action,
             'list_url' => $domstor->getListLink($object, $action),
-            'list_title' => $titleProvider->getListTitle($object, $action),
+            'list_title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr')),
         );
     }
     
@@ -71,6 +74,8 @@ class ObjectsController extends Controller
      * @Template()
      */
     public function listAction($object, $action, Request $request) {
+        /* @var $locator \Symfony\Component\Config\FileLocatorInterface */
+        $locator = $this->container->get('file_locator');
         /* @var $builder Domstor_Builder */
         $builder = $this->get('domstor.template.domstorlib.domstor_builder');
         $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
@@ -81,10 +86,10 @@ class ObjectsController extends Controller
                 'type' => $baseParams['cache_type'],
                 'time' => $baseParams['cache_time'],
                 'uniq_key' => (string)$baseParams['org_id'],
-                'options' => array('directory' => $baseParams['cache_dir']),
+                'options' => array('directory' => $locator->locate($baseParams['cache_dir'])),
             ),
             'filter' => array(
-                'template_dir' => $this->getParameter('kernel.root_dir').'/../src/AppBundle/Resources/views/Filters',
+                'template_dir' => $locator->locate($baseParams['filter_template_dir']),
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
@@ -115,11 +120,12 @@ class ObjectsController extends Controller
         $list->deleteField('note_web');
         $list->deleteField('building_material');
         $list->deleteField('balcony');
-        $titleProvider = new TitleProvider($domstor);
+        /* @var $titleProvider TitleProviderInterface */
+        $titleProvider = $this->get('domstor.template.provider.title');
         return [
             'list' => $list,
             'locationsList' => $locationList,
-            'title' => $titleProvider->getListTitle($object, $action),
+            'title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr')),
         ];
     }
     

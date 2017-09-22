@@ -673,7 +673,7 @@
             font-size: 2.1em;
             text-align: center;
             padding-bottom: 1em;
-            color: $headers_color_bg;
+            color: $color_urgent_header;
         }
 
         a.jcarousel_urgent-prev, a.jcarousel_urgent-next {
@@ -1312,7 +1312,7 @@
             font-size: 2.1em;
             padding-bottom: 1em;
             text-align: center;
-            color: $headers_color_bg;
+            color: $color_vacancy_header;
         }
 
         a.jcarousel_vacancy-prev, a.jcarousel_vacancy-next {

@@ -120,10 +120,10 @@ domstor_template:
         builder:
             org_id: 13
             location_id: 2004
-            template: 'DomstorTemplateBundle:Block:realtyicons.html.twig'
             cache_dir: '%kernel.cache_dir%'
             cache_type: 'file'
             cache_time: 86400
+            filter_template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
     mailer:
         request: 
             service: 'default'
@@ -131,3 +131,35 @@ domstor_template:
             from: '%mailer_request_from%'
             subject: '%mailer_request_subject%'
             email_template: 'DomstorTemplateBundle:Email:email_request.html.twig'
+    title:
+        objects:
+            flat: 'Квартиры'
+            house: 'Дома и коттеджи'
+            land: 'Земля и дачи'
+            garage: 'Гаражи и парковки'
+            office: 'Офисная'
+            trade: 'Торговая'
+            product: 'Производственная'
+            storehouse: 'Складская'
+            landcom: 'Земля'
+            other: 'Прочее'
+            complex: 'Имущественные'
+        objectsHtml:
+            flat: 'Квартиры'
+            house: 'Дома<br>Коттеджи'
+            land: 'Дачи<br>Земля'
+            garage: 'Гаражи<br>Парковки'
+            office: 'Офисная'
+            trade: 'Торговая'
+            product: 'Производственная'
+            storehouse: 'Складская'
+            landcom: 'Земля'
+            other: 'Прочее'
+            complex: 'Имущественные'
+        actions:
+            sale: 'Продают'
+            rent: 'Сдают'
+            purchase: 'Купят'
+            rentuse: 'Снимут'
+            exchange: 'Обмен'
+            new: 'Новостройки'

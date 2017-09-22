@@ -20,17 +20,17 @@ PHP>=7.0
 
 Настройка
 --------------
-Для настройки блока меню недвижимости необходимо настроить DomstorTemplateBundle. Пример настроек:
+Необходимо настроить DomstorTemplateBundle. Пример настроек:
 ```yaml
 domstor_template:
     domstorlib:
         builder:
             org_id: 13 #Идентификатор вашей организации в системе Домстор
             location_id: 2004 #Идентификатор города в системе Домстор. 2004 - Кемерово, 2006 - Новокузнецк, 2236 - Новосибирск
-            template: 'DomstorTemplateBundle:Block:realtyicons.html.twig' #Шаблон блока меню недвижимости
             cache_dir: '%kernel.cache_dir%' #Директория, где хранится кэш объектов
             cache_type: 'file' #Тип кэширования. Поддерживаются: file, apc, array, xcache, memcache
             cache_time: 86400 #Время жизни кэша
+            filter_template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
     mailer:
         request: 
             service: 'default' #mailer-сервис, через который будут отправляться сообщения о поступлении новых заявок
@@ -38,6 +38,39 @@ domstor_template:
             from: '%mailer_request_from%' #От кого будут приходить заявки
             subject: '%mailer_request_subject%' #Тема письма для заявки
             email_template: 'DomstorTemplateBundle:Email:email_request.html.twig' #Шаблон письма
+    
+    title: 
+        objects: #Заголовки пунктов для меню недвижимости
+            flat: 'Квартиры'
+            house: 'Дома и коттеджи'
+            land: 'Земля и дачи'
+            garage: 'Гаражи и парковки'
+            office: 'Офисная'
+            trade: 'Торговая'
+            product: 'Производственная'
+            storehouse: 'Складская'
+            landcom: 'Земля'
+            other: 'Прочее'
+            complex: 'Имущественные'
+        objectsHtml: #Заголовки пунктов для меню недвижимости с возможностью использовать html теги
+            flat: 'Квартиры'
+            house: 'Дома<br>Коттеджи'
+            land: 'Дачи<br>Земля'
+            garage: 'Гаражи<br>Парковки'
+            office: 'Офисная'
+            trade: 'Торговая'
+            product: 'Производственная'
+            storehouse: 'Складская'
+            landcom: 'Земля'
+            other: 'Прочее'
+            complex: 'Имущественные'
+        actions: #Заголовки разделов
+            sale: 'Продают'
+            rent: 'Сдают'
+            purchase: 'Купят'
+            rentuse: 'Снимут'
+            exchange: 'Обмен'
+            new: 'Новостройки'
 ```
 
 Блоки на главной странице
@@ -61,6 +94,15 @@ domstor_template:
 {{ sonata_block_render({'type':'domstor.template.block.home.vacancy.service'},  {'count':1}) }}
 ```
 В этом случае в блоке будет выведена только одна запись.
+
+Существует возможность вывести блок формы поиска недвижимости:
+```twig
+{{ sonata_block_render(
+        { 'type':'domstor.template.block.domstor_filter.service' },
+        { 'object':'flat', 'action':'sale', 'form_action_route':'app_objects_list', 'filter_template_dir': '@AppBundle/Resources/views/HomeFilters' }
+    ) }}
+```
+`object` - тип недвижимости, `action` - категория, `form_action_route` - имя роута страницы поиска недвижимости. `filter_template_dir` - опциональный параметр, позволяет указать отдельную папку с шаблонами формы поиска, если не передан этот параметр в блок, то берется значение из `domstor_template.domstorlib.builder.filter_template_dir`. Поддерживается указание пути с @.
 
 Статические страницы без контроллера
 --------------

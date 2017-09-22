@@ -31,4 +31,5 @@ sonata_block:
         domstor.template.block.home.urgent_sale.service: ~
         domstor.template.block.home.vacancy.service: ~
         domstor.template.block.realtyicons.service: ~
+        domstor.template.block.domstor_filter.service: ~
         

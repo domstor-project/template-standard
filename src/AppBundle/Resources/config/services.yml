@@ -4,12 +4,16 @@ services:
         factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
         arguments:
             - AppBundle\Entity\Employee
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
             
     app.repository.partner:
         class: AppBundle\Entity\PartnerRepository
         factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
         arguments:
             - AppBundle\Entity\Partner
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
             
     app.repository.post:
         class: AppBundle\Entity\PostRepository
@@ -38,6 +42,8 @@ services:
         factory:    ['@doctrine.orm.default_entity_manager', 'getRepository']
         arguments:
             - AppBundle\Entity\SpecialOffer
+        tags:
+             - { name: knp_paginator.injectable, paginator: knp_paginator }
             
     app.repository.urgent_sale:
         class: AppBundle\Entity\UrgentSaleRepository
