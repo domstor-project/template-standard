@@ -21,7 +21,6 @@
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "domstor-project/template-bundle": "^1.5",
-        "friendsofsymfony/jsrouting-bundle": "^1.6",
         "incenteev/composer-parameter-handler": "^2.0",
         "leafo/scssphp": "^0.6",
         "patchwork/jsqueeze": "^2.0",
