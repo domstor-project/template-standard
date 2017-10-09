@@ -7,6 +7,7 @@ imports:
     - { resource: sonata/block.yml }
     - { resource: sonata/media.yml }
     - { resource: sonata/ckeditor.yml }
+    - { resource: sonata/intl.yml }
     - { resource: fos/user.yml }
     - { resource: fos/rest.yml }
 
@@ -49,6 +50,9 @@ twig:
         - 'SonataFormatterBundle:Form:formatter.html.twig'
         - 'SonataCoreBundle:Form:datepicker.html.twig'
         - 'DomstorTemplateBundle::captcha.html.twig'
+    date:
+        format: 'd.m.Y'
+        timezone: "%default_timezone%"
 
 assetic:
     debug:          "%kernel.debug%"
@@ -106,7 +110,7 @@ jms_serializer:
     auto_detection: true
 
 knp_paginator:
-    page_range: 12                     
+    page_range: 10
     default_options:
         page_name: page
         sort_field_name: sort

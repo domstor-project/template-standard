@@ -20,3 +20,5 @@ parameters:
     mailer_request_recipients: ['test@test.su']
     mailer_request_subject: 'Тема письма'
     mailer_request_from: 'test@tes.su'
+
+    default_timezone: 'Asia/Novosibirsk'

@@ -2,21 +2,23 @@ Domstor Template Standard
 ========================
 Требования
 --------------
-PHP>=7.0
+PHP>=7.1
 
 Установка
 --------------
 1. `composer create-project domstor-project/template-standard`
 2. Обязательно указать параметр `mailer_user`
 3. Параметр `mailer_request_recipients` вводится в формате ['email@email1.ru', 'email@email2.ru']
-4. Выставить права на var/logs и var/cache. Подробнее [Symfony Documentation](https://symfony.com/doc/current/setup/file_permissions.html).
-5. Выполнить `php bin/console d:d:c` для создания базы данных
-6. Выполнить `php bin/console d:s:u --force` для обновления схемы базы
-7. Выполнить `php bin/console cache:clear` для очистки кэша
-8. Выполнить `php bin/console fos:js-routing:dump` для выгрузки роутов Symfony в JS
-9. Выполнить `php bin/console assetic:dump` для выгрузки ассетов
-10. Создать папку web/uploads и установить права `sudo chown -R www-data:www-data /path/to/project-folder/web/uploads` `sudo chmod -R 755 /path/to/project-folder/web/uploads`
-11. Создать пользователя для доступа к системе администрирования `php bin/console fos:user:create` и `php bin/console fos:user:promote admin_user_name ROLE_SUPER_ADMIN`
+4. Указать параметр `default_timezone`. Например: `Asia/Krasnoyarsk`, `Asia/Novosibirsk`
+5. Отредактировать файл `app/AppKernel.php`. В строчке `date_default_timezone_set('Asia/Novosibirsk');` заменить временную зону на соответствующую введеной в предыдущем пункте
+6. Выставить права на var/logs и var/cache. Подробнее [Symfony Documentation](https://symfony.com/doc/current/setup/file_permissions.html).
+7. Выполнить `php bin/console d:d:c` для создания базы данных
+8. Выполнить `php bin/console d:s:u --force` для обновления схемы базы
+9. Выполнить `php bin/console cache:clear` для очистки кэша
+10. Выполнить `php bin/console fos:js-routing:dump` для выгрузки роутов Symfony в JS
+11. Выполнить `php bin/console assetic:dump` для выгрузки ассетов
+12. Создать папку web/uploads и установить права `sudo chown -R www-data:www-data /path/to/project-folder/web/uploads` `sudo chmod -R 755 /path/to/project-folder/web/uploads`
+13. Создать пользователя для доступа к системе администрирования `php bin/console fos:user:create` и `php bin/console fos:user:promote admin_user_name ROLE_SUPER_ADMIN`
 
 Настройка
 --------------

@@ -1,0 +1,6 @@
+sonata_intl:
+  locale: "%locale%"
+  timezone:
+    default: "%default_timezone%"
+    locales:
+      ru: "%default_timezone%"

@@ -36,9 +36,6 @@ monolog:
         #chromephp:
         #    type: chromephp
         #    level: info
-        
-knp_paginator:
-    page_range: 1
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']

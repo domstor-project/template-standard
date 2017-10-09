@@ -31,7 +31,7 @@ class ReviewsController extends Controller
     public function listAction(Request $request)
     {
         $page = $request->query->getAlnum('page', 1);
-        $limit = $this->getParameter('knp_paginator.page_range');
+        $limit = 10;
         /* @var $repo ReviewProviderInterface */
         $repo = $this->get('app.repository.review');
         $pagination = $repo->findForListPage($page, $limit);

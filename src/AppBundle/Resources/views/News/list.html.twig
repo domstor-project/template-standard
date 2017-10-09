@@ -13,7 +13,7 @@
         {% for row in pagination %}
                 <div class="news_block"><!-- Блок новости -->
                     <p><a href="{{ path('app_news_show', {post: row.id}) }}">{{ row.title|length > 127 ? row.title|slice(0, 127) ~ '...' : row.title }}</a></p>
-                    <p class="data">{{ row.publicationDateStart|date('d.m.Y') }}</p>
+                    <p class="data">{{ row.publicationDateStart|date }}</p>
                 </div>
         {% endfor %}    
         </div>

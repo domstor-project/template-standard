@@ -8,6 +8,6 @@
 {% block content %}
     <h1>{{ post.title }}</h1>
     
-    <p class="data">{{ post.publicationDateStart|date('d.m.Y') }}</p>
+    <p class="data">{{ post.publicationDateStart|date }}</p>
     {{ post.content|raw }}
 {% endblock %}
