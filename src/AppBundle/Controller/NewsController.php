@@ -31,7 +31,7 @@ class NewsController extends Controller
     public function listAction(Request $request)
     {
         $page = $request->query->getAlnum('page', 1);
-        $limit = 10;
+        $limit = 12;
         /* @var $repo PostProviderInterface */
         $repo = $this->get('app.repository.post');
         $pagination = $repo->findForListPage($page, $limit);

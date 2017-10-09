@@ -2,12 +2,12 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets filter='cssrewrite'
+    {% stylesheets filter='cssrewrite,?scssphp'
         "https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-    {% stylesheets 'bundles/app/sass/inner_page.scss' filter="scssphp" output="css/inner_page.css" %}
+    {% stylesheets 'bundles/app/sass/inner_page.scss' filter="cssrewrite,?scssphp" output="css/inner_page.css" %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}

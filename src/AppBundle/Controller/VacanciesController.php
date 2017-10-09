@@ -31,7 +31,7 @@ class VacanciesController extends Controller
     public function listAction(Request $request)
     {
         $page = $request->query->getAlnum('page', 1);
-        $limit = 10;
+        $limit = 12;
         /* @var $repo VacancyProviderInterface */
         $repo = $this->get('app.repository.vacancy');
         $pagination = $repo->findForListPage($page, $limit);
