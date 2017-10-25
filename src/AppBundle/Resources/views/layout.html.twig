@@ -7,7 +7,7 @@
         "http://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,500,700&subset=latin,cyrillic"
         "bundles/app/css/style.css"
     %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+        <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
     
@@ -22,11 +22,11 @@
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     {% block content_js %}{% endblock %}
 {% endblock %}
     

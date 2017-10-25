@@ -2,16 +2,14 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets filter='cssrewrite'
+    {% stylesheets filter='cssrewrite,?scssphp' output="css/admin.css"
         'bundles/sonataformatter/markitup/skins/sonata/style.css'
         'bundles/sonataformatter/markitup/sets/markdown/style.css'
         'bundles/sonataformatter/markitup/sets/html/style.css'
         'bundles/sonataformatter/markitup/sets/textile/style.css'
+        'bundles/app/sass/admin.scss'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
-    {% endstylesheets %}
-    {% stylesheets 'bundles/app/sass/admin.scss' filter="scssphp" output="css/admin.css" %}
-        <link  rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
 
