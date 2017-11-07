@@ -49,5 +49,7 @@ nbproject/*
 vendor/*
 .idea/
 .hg/*
-/domstor-project/**
+/domstor-project/*/nbproject/*
+/domstor-project/*/vendor/*
+/domstor-project/*/.git/*
 /stepanets/**
