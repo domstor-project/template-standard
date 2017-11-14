@@ -124,10 +124,17 @@ domstor_template:
         builder:
             org_id: 13
             location_id: 2004
-            cache_dir: '%kernel.cache_dir%'
-            cache_type: 'file'
-            cache_time: 86400
-            filter_template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
+            cache:
+              type: 'file'
+              time: 86400
+              uniq_key: '13'
+              options:
+                directory: '%kernel.cache_dir%'
+            filter:
+              template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
+        links:
+            2004: 'Недвижимость в Кемерово'
+            43: 'Недвижимость в Кемеровской области'
     mailer:
         request: 
             service: 'default'

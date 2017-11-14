@@ -5,9 +5,22 @@
 {% block breadcrumbs %}<a href="{{ url('app_home_index') }}">Главная</a> / {{ title }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter="?jsqueeze" output="js/minified/switch_location.js"
+        'https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js'
+        '@DomstorTemplateBundle/Resources/public/js/switch_location.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url}}"></script>
+    {% endjavascripts %}
+{%  endblock %}
+
 
 {% block content %}
-    <h1>{{ title }}</h1>
+    <div class="header_one_location">
+        <h1>{{ title }}</h1>
+        {{ sonata_block_render({'type':'domstor.template.block.switch_location.service'}, {'current_location': currentLocation} ) }}
+    </div>
     {{ list.filter|raw }}
     <div class="table-responsive">{{ list|raw }} </div>
 {% endblock %}

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Domstor\TemplateBundle\Model\TitleProviderInterface;
 use Domstor_Builder;
 use Domstor_Domstor;
+use Symfony\Component\Config\FileLocatorInterface;
 
 /**
  * @Route("/objects")
@@ -16,26 +17,33 @@ use Domstor_Domstor;
 class ObjectsController extends Controller
 {    
     /**
-     * @Route("/{object}/{action}/{id}")
+     * @param int    $location
+     * @param string $object
+     * @param string $action
+     * @param string $id
+     * @param Request $request
+     * @Route("/{location}/{object}/{action}/{id}")
      * @Template()
+     * @return array
      */
-    public function detailAction($object, $action, $id) {
-        /* @var $locator \Symfony\Component\Config\FileLocatorInterface */
+    public function detailAction($location, $object, $action, $id, Request $request) {
+        /* @var $locator FileLocatorInterface */
         $locator = $this->container->get('file_locator');
         /* @var $builder Domstor_Builder */
         $builder = $this->get('domstor.template.domstorlib.domstor_builder');
         $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
         $domstor = $builder->build(array(
             'org_id' => $baseParams['org_id'],
-            'location_id' => $baseParams['location_id'],
+            'location_id' => $location,
             'cache' => array(
-                'type' => $baseParams['cache_type'],
-                'time' => $baseParams['cache_time'],
-                'uniq_key' => (string)$baseParams['org_id'],
-                'options' => array('directory' => $locator->locate($baseParams['cache_dir'])),
+                'type' => $baseParams['cache']['type'],
+                'time' => $baseParams['cache']['time'],
+                'uniq_key' => $baseParams['cache']['uniq_key'],
+                'options' => array('directory' => $locator->locate($baseParams['cache']['options']['directory'])),
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
+                    'location'=> $location,
                     'object' => $object,
                     'action' => $action,
                     'id' => '-id',
@@ -44,7 +52,7 @@ class ObjectsController extends Controller
                     'object' => $object,
                     'action' => $action,
                 )).'?page=%page%sort%filter',
-                
+
             ),
             'href_placeholders' => array(
                 'id' => '-id',
@@ -60,39 +68,46 @@ class ObjectsController extends Controller
         }
         /* @var $titleProvider TitleProviderInterface */
         $titleProvider = $this->get('domstor.template.provider.title');
-        return array(
+        return [
             'detail' => $detail,
             'object' => $object,
             'action' => $action,
             'list_url' => $domstor->getListLink($object, $action),
-            'list_title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr')),
-        );
+            'list_title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr'))
+        ];
     }
     
     /**
+     * @param string $object
+     * @param string $action
+     * @param Request $request
      * @Route("/{object}/{action}")
      * @Template()
+     * @return array
      */
     public function listAction($object, $action, Request $request) {
+        $locationFromCookie = $request->cookies->get('location_id',null);
         /* @var $locator \Symfony\Component\Config\FileLocatorInterface */
         $locator = $this->container->get('file_locator');
         /* @var $builder Domstor_Builder */
         $builder = $this->get('domstor.template.domstorlib.domstor_builder');
         $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
+        $locationId = is_numeric($locationFromCookie) ? (int)$locationFromCookie : $baseParams['location_id'];
         $domstor = $builder->build(array(
             'org_id' => $baseParams['org_id'],
-            'location_id' => $baseParams['location_id'],
+            'location_id' => $locationId,
             'cache' => array(
-                'type' => $baseParams['cache_type'],
-                'time' => $baseParams['cache_time'],
-                'uniq_key' => (string)$baseParams['org_id'],
-                'options' => array('directory' => $locator->locate($baseParams['cache_dir'])),
+                'type' => $baseParams['cache']['type'],
+                'time' => $baseParams['cache']['time'],
+                'uniq_key' => $baseParams['cache']['uniq_key'],
+                'options' => array('directory' => $locator->locate($baseParams['cache']['options']['directory'])),
             ),
             'filter' => array(
-                'template_dir' => $locator->locate($baseParams['filter_template_dir']),
+                'template_dir' => $locator->locate($baseParams['filter']['template_dir']),
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
+                    'location' => $locationId,
                     'object' => $object,
                     'action' => $action,
                     'id' => '-id',
@@ -126,6 +141,7 @@ class ObjectsController extends Controller
             'list' => $list,
             'locationsList' => $locationList,
             'title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr')),
+            'currentLocation'=>$locationId
         ];
     }
     

@@ -561,6 +561,49 @@
             }
         }
     }
+    
+    /* ЗАГОЛОВОК И ССЫЛКА НА СТРАНИЦЕ ПОИСКА */
+    .header_one_location {
+        position: relative;
+        display: table;
+        width: 100%;
+        padding-top: 1em;
+        
+        @media only screen and (max-width: 991px) {
+            display: block;
+        }
+        
+        h1 {
+            position: relative;
+            display: table-cell;
+            width: 70%;
+            vertical-align: top;
+            padding-top: 0;
+            
+            @media only screen and (max-width: 991px) {
+                display: block;
+                width: 100%;
+            }
+        }
+        .switch_location {
+            position: relative;
+            display: table-cell;
+            width: 30%;
+            vertical-align: top;
+            text-align: right;
+            padding-bottom: .5em;
+            white-space: nowrap;
+            
+            @media only screen and (max-width: 991px) {
+                display: block;
+                width: 100%;
+                white-space: normal;
+            }
+            @media only screen and (max-width: 479px) {
+                text-align: left;
+            }
+        }
+    }
  }   
     
 .fancybox-opened .fancybox-title {

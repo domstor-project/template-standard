@@ -29,10 +29,17 @@ domstor_template:
         builder:
             org_id: 13 #Идентификатор вашей организации в системе Домстор
             location_id: 2004 #Идентификатор города в системе Домстор. 2004 - Кемерово, 2006 - Новокузнецк, 2236 - Новосибирск
-            cache_dir: '%kernel.cache_dir%' #Директория, где хранится кэш объектов
-            cache_type: 'file' #Тип кэширования. Поддерживаются: file, apc, array, xcache, memcache
-            cache_time: 86400 #Время жизни кэша
-            filter_template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
+            cache:
+              type: 'file' #Тип кэширования. Поддерживаются: file, apc, array, xcache, memcache
+              time: 86400 #Время жизни кэша
+              uniq_key: '13' #Уникальный ключ хэша
+              options:
+                directory: '%kernel.cache_dir%' #Директория, где хранится кэш объектов
+            filter:
+              template_dir: '%kernel.root_dir%/../src/AppBundle/Resources/views/Filters'
+        links: #Список населенных пунктов для поиска недвижимости
+            2004: 'Недвижимость в Кемерово'
+            43: 'Недвижимость в Кемеровской области'
     mailer:
         request: 
             service: 'default' #mailer-сервис, через который будут отправляться сообщения о поступлении новых заявок
