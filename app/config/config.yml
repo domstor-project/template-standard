@@ -82,6 +82,7 @@ doctrine:
             json: Sonata\Doctrine\Types\JsonType
         options:
             1002: "SET NAMES UTF8"
+        server_version: '%database_server_version%'
 
     orm:
         default_entity_manager: default

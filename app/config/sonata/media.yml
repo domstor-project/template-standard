@@ -34,6 +34,12 @@ sonata_media:
             formats:
                 home: { width:  1920, height: 425, quality: 100}
 
+        news:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                home: { width: 254, height: 167, quality: 100}
+
     cdn:
         server:
             path: /uploads/media

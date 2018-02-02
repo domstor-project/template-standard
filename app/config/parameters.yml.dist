@@ -22,3 +22,4 @@ parameters:
     mailer_request_from: 'test@tes.su'
 
     default_timezone: 'Asia/Novosibirsk'
+    database_server_version: '5.7'

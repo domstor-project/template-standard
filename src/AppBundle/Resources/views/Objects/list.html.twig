@@ -19,7 +19,6 @@
 {% block content %}
     <div class="header_one_location">
         <h1>{{ title }}</h1>
-        {{ sonata_block_render({'type':'domstor.template.block.switch_location.service'}, {'current_location': currentLocation} ) }}
     </div>
     {{ list.filter|raw }}
     <div class="table-responsive">{{ list|raw }} </div>

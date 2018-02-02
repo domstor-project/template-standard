@@ -10,12 +10,11 @@ use Domstor\TemplateBundle\Model\TitleProviderInterface;
 use Domstor_Builder;
 use Domstor_Domstor;
 use Symfony\Component\Config\FileLocatorInterface;
-
 /**
  * @Route("/objects")
  */
 class ObjectsController extends Controller
-{    
+{
     /**
      * @param int    $location
      * @param string $object
@@ -43,16 +42,16 @@ class ObjectsController extends Controller
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
-                    'location'=> $location,
-                    'object' => $object,
-                    'action' => $action,
-                    'id' => '-id',
-                )).'?%sort%filter',
+                        'location'=> $location,
+                        'object' => $object,
+                        'action' => $action,
+                        'id' => '-id',
+                    )).'?%sort%filter',
                 'list' =>  $this->generateUrl('app_objects_list', array(
-                    'object' => $object,
-                    'action' => $action,
-                )).'?page=%page%sort%filter',
-
+                        'location'=> $location,
+                        'object' => $object,
+                        'action' => $action,
+                    )).'?page=%page%sort%filter',
             ),
             'href_placeholders' => array(
                 'id' => '-id',
@@ -60,7 +59,7 @@ class ObjectsController extends Controller
         ));
         $domstor->createFilter($object, $action);
         $domstor->getFilter()->bindFromRequest();
-        
+
         $detail = $domstor->getDetail($object, $action, $id);
         if ($detail===null)
         {
@@ -76,23 +75,23 @@ class ObjectsController extends Controller
             'list_title' => $titleProvider->getListTitle($object, $action, $domstor->getLocationName('pr'))
         ];
     }
-    
+
     /**
+     * @param string $location
      * @param string $object
      * @param string $action
      * @param Request $request
-     * @Route("/{object}/{action}")
+     * @Route("/{location}/{object}/{action}")
      * @Template()
      * @return array
      */
-    public function listAction($object, $action, Request $request) {
-        $locationFromCookie = $request->cookies->get('location_id',null);
+    public function listAction($location, $object, $action, Request $request) {
         /* @var $locator \Symfony\Component\Config\FileLocatorInterface */
         $locator = $this->container->get('file_locator');
         /* @var $builder Domstor_Builder */
         $builder = $this->get('domstor.template.domstorlib.domstor_builder');
         $baseParams = $this->getParameter('domstor.template.domstorlib.domstor_parameters');
-        $locationId = is_numeric($locationFromCookie) ? (int)$locationFromCookie : $baseParams['location_id'];
+        $locationId = is_numeric($location) ? (int)$location : $baseParams['location_id'];
         $domstor = $builder->build(array(
             'org_id' => $baseParams['org_id'],
             'location_id' => $locationId,
@@ -107,29 +106,29 @@ class ObjectsController extends Controller
             ),
             'href_templates' => array(
                 'object' =>  $this->generateUrl('app_objects_detail', array(
-                    'location' => $locationId,
-                    'object' => $object,
-                    'action' => $action,
-                    'id' => '-id',
-                )).'?%sort%filter',
+                        'location' => $locationId,
+                        'object' => $object,
+                        'action' => $action,
+                        'id' => '-id',
+                    )).'?%sort%filter',
                 'list' =>  $this->generateUrl('app_objects_list', array(
-                    'object' => $object,
-                    'action' => $action,
-                )).'?page=%page%sort%filter',
-                
+                        'location' => $locationId,
+                        'object' => $object,
+                        'action' => $action,
+                    )).'?page=%page%sort%filter',
+
             ),
             'href_placeholders' => array(
                 'id' => '-id',
             ),
         ));
-
         $locationList = $domstor->getLocationsList($object, $action);
         $page = $request->get('page', 1);
         $list = $domstor->getList($object, $action, $page);
         $domstor->savePageNumber($page);
         $list->addCssClass($object.'_'.$action);
-        $list->deleteField('phone'); 
-        $list->deleteField('phone_want'); 
+        $list->deleteField('phone');
+        $list->deleteField('phone_want');
         $list->deleteField('other_building');
         $list->deleteField('square_house');
         $list->deleteField('note_web');
@@ -144,5 +143,4 @@ class ObjectsController extends Controller
             'currentLocation'=>$locationId
         ];
     }
-    
 }
